@@ -1,0 +1,7 @@
+CREATE ROLE <username> WITH INHERIT LOGIN ENCRYPTED PASSWORD '<password>';
+
+-- bawdb
+CREATE DATABASE bawdb OWNER <username> ENCODING UTF8;
+GRANT ALL PRIVILEGES ON DATABASE bawdb to <username>;
+\c bawdb;
+CREATE SCHEMA IF NOT EXISTS <username> AUTHORIZATION <username>;

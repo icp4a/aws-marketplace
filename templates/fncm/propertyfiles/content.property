@@ -1,0 +1,79 @@
+####################################################
+## USER Property for FNCM ##
+####################################################
+## Provide the user name for P8Domain. For example: "CEAdmin"
+CONTENT.APPLOGIN_USER="<Required>"
+
+## Provide the user password for P8Domain.
+CONTENT.APPLOGIN_PASSWORD="<Required>"
+
+## Provide LTPA key password for FNCM deployment.
+CONTENT.LTPA_PASSWORD="<Required>"
+
+## Provide keystore password for FNCM deployment.
+CONTENT.KEYSTORE_PASSWORD="<Required>"
+
+## Provide key password for ICC SAP deployment.
+ICCSAP.KEYSTORE_PASSWORD="<Required>"
+
+## Provide ARCHIVE_USERID for ICC SAP deployment.
+ICCSAP.ARCHIVE_USER_ID="<Required>"
+
+## Provide ARCHIVE_PASSWORD for ICC SAP deployment.
+ICCSAP.ARCHIVE_USER_PASSWORD="<Required>"
+
+## Provide keystore password for IER deployment.
+IER.KEYSTORE_PASSWORD="<Required>"
+
+####################################################
+## USER Property for Content initialization ##
+####################################################
+## Enable/disable ECM (FNCM) / BAN initialization (e.g., creation of P8 domain, creation/configuration of object stores,
+## creation/configuration of CSS servers, and initialization of Navigator (ICN).
+## The default valuse is "Yes", set "No" to disable.
+CONTENT_INITIALIZATION.ENABLE="Yes"
+
+## user name for P8 domain admin, for example, "CEAdmin". This parameter accepts comma-separated lists, for example, "CEAdmin1, CEAdmin2"
+CONTENT_INITIALIZATION.LDAP_ADMIN_USER_NAME="<Required>"
+
+## group name for P8 domain admin, for example, "P8Administrators". This parameter accepts comma-separated lists, for example, "P8Group1, P8Group2"
+CONTENT_INITIALIZATION.LDAP_ADMINS_GROUPS_NAME="<Required>"
+
+## user name and group name for object store admin, for example, "CEAdmin" or "P8Administrators". This parameter accepts comma-separated lists, for example, "P8Group1, P8Group2"
+CONTENT_INITIALIZATION.CPE_OBJ_STORE_ADMIN_USER_GROUPS="<Required>"
+
+## Specify whether to enable workflow for the object store, the default vaule is "Yes"
+CONTENT_INITIALIZATION.CPE_OBJ_STORE_ENABLE_WORKFLOW="Yes"
+
+## Specify a table space for the workflow data.
+CONTENT_INITIALIZATION.CPE_OBJ_STORE_WORKFLOW_DATA_TBL_SPACE="bawtos_tbs"
+
+## Designate an LDAP group for the workflow admin group.
+CONTENT_INITIALIZATION.CPE_OBJ_STORE_WORKFLOW_ADMIN_GROUP="<Required>"
+
+## Designate an LDAP group for the workflow config group
+CONTENT_INITIALIZATION.CPE_OBJ_STORE_WORKFLOW_CONFIG_GROUP="<Required>"
+
+## Provide a name for the connection point
+CONTENT_INITIALIZATION.CPE_OBJ_STORE_WORKFLOW_PE_CONN_POINT_NAME="<Required>"
+
+####################################################
+## USER Property for BAN ##
+####################################################
+## Provide the user name for BAN. For example: "BANAdmin"
+BAN.APPLOGIN_USER="<Required>"
+
+## Provide the user password for BAN.
+BAN.APPLOGIN_PASSWORD="<Required>"
+
+## Provide LTPA key password for BAN deployment.
+BAN.LTPA_PASSWORD="<Required>"
+
+## Provide keystore password for BAN deployment.
+BAN.KEYSTORE_PASSWORD="<Required>"
+
+## Provide the user name for jMail used by BAN. For example: "jMailAdmin"
+BAN.JMAIL_USER_NAME="<Optional>"
+
+## Provide the user password for jMail used by BAN.
+BAN.JMAIL_USER_PASSWORD="<Optional>"

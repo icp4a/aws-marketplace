@@ -1,0 +1,27 @@
+#######################################
+## Property file for database server ##
+#######################################
+## Please do not change this value.
+DB_SERVER_LIST="dbserver1"
+
+## Provide the database type from your infrastructure. The possible values are "db2" or "db2HADR" or "oracle" or "sqlserver" "postgresql". In this release only postgresql is supported.
+dbserver1.DATABASE_TYPE="postgresql"
+
+## Provide the database server name or IP address of the database server.
+dbserver1.DATABASE_SERVERNAME="<Required>"
+
+## Provide the database server port. For postgresql, the default is "5432".
+dbserver1.DATABASE_PORT="<Required>"
+
+## The parameter is used to support database connection over SSL for database. Default value is "true"
+dbserver1.DATABASE_SSL_ENABLE="True"
+
+## In this release, only server authentication is supported.  Please do not change this default value, which is "False"
+dbserver1.POSTGRESQL_SSL_CLIENT_SERVER="False"
+
+## The name of the secret that contains the DB2/Oracle/MSSQLServer/PostgreSQL SSL certificate.
+dbserver1.DATABASE_SSL_SECRET_NAME="ibm-cp4ba-db-ssl-secret-for-alias"
+
+## Only server authentication is supported in this release.
+## If DATABASE_SSL_ENABLE is "True", please get the SSL certificate file from server and upload it to your Amazon S3 bucket, then copy your S3 URI below.
+dbserver1.DATABASE_SSL_CERT_FILE_FOLDER="s3://yours3bucket/example.crt"
