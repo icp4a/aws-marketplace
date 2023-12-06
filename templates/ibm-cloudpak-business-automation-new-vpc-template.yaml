@@ -44,7 +44,7 @@ Metadata:
           - OpenshiftPassword
       - Label:
           default: Storage Configuration
-        Parameters:   
+        Parameters:
           - OCSInstanceType
       - Label:
           default: Red Hat subscription information
@@ -85,18 +85,18 @@ Metadata:
         Parameters:
           - LdapConfigurationPropertyFile
 
-      - Label: 
-          default: FileNet Content Manager (FNCM)  
+      - Label:
+          default: FileNet Content Manager (FNCM)
         Parameters:
           - FNCMConfigurationPropertyFile
           - FNCMDBNameAndUserPropertyFile
-      - Label: 
+      - Label:
           default: Operational Decisions Manager (ODM)
         Parameters:
           - ODMConfigurationPropertyFile
           - ODMDBNameAndUserPropertyFile
       - Label:
-          default: Business Automation Workflow (BAW) 
+          default: Business Automation Workflow (BAW)
         Parameters:
           - BAWConfigurationPropertyFile
           - BAWDBNameAndUserPropertyFile
@@ -204,11 +204,11 @@ Metadata:
       DBSecuritGroup:
         default: Enter the default security group of your database server
 
-      LdapConfigurationPropertyFile: 
+      LdapConfigurationPropertyFile:
         default: Directory Service Server Configuration
 
       FNCMConfigurationPropertyFile:
-        default: FileNet Content Management Configuration 
+        default: FileNet Content Management Configuration
       FNCMDBNameAndUserPropertyFile:
         default: FileNet Content Manager database property file
 
@@ -226,8 +226,8 @@ Metadata:
 Parameters:
   LicenseAgreement:
     Description: >-
-      Accept the product license for Cloud Pak for Business Automation License after reading it at https://ibm.biz/cp4ba_license_2202 (OR)
-      Accept the license for Cloud Pak for Business Automation Reserved License after reading it at https://ibm.biz/cp4ba-reserved-license-2202
+      Accept the product license for Cloud Pak for Business Automation License after reading it at https://ibm.biz/cp4ba_hyperscaler_license_2301 (OR)
+      Accept the license for Cloud Pak for Business Automation Reserved License after reading it at https://ibm.biz/cp4ba-reserved-license-2301
     Type: String
     Default: '-'
     AllowedValues:
@@ -237,9 +237,9 @@ Parameters:
   APIKey:
     Description: >-
        The IBM Cloud Pak for Business Automation entitlement key to access IBM Container Registry.
-    Type: String 
+    Type: String
     NoEcho: 'true'
-    
+
   NumberOfAZs:
     Description: >-
       The number of Availability Zones to be used for the deployment. Keep in mind that some regions may be limited to 2 Availability Zones. For a single IBM Cloud Pak for Business Automation cluster to be highly available, a minimum of 3 Availability Zones are needed to avoid a single point of failure when using 3, 5 or 7 master nodes.
@@ -250,7 +250,7 @@ Parameters:
   AvailabilityZones:
     Description: The list of Availability Zones to use for the subnets in the VPC. The Template uses one or three Availability Zones and preserves the logical order you specify.
     Type: List<AWS::EC2::AvailabilityZone::Name>
-  
+
   KeyPairName:
     Description: The name of an existing public/private key pair, which allows you
       to securely connect to your instance after it launches.
@@ -300,13 +300,13 @@ Parameters:
   ClusterNetworkCIDR:
     AllowedPattern: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/([0-9]|[1-2][0-9]|3[0-2]))$
     ConstraintDescription: CIDR block parameter must be in the form x.x.x.x/x
-    Description: The Cluster Network CIDR IP range that is used as IP address pools for pods. 
+    Description: The Cluster Network CIDR IP range that is used as IP address pools for pods.
     Type: String
     Default: 10.128.0.0/14
   RedhatPullSecret:
     Description: S3 path of OpenShift Installer Provisioned Infrastructure pull secret(e.g., s3://my-bucket/path/to/pull-secret).
     Type: String
-    
+
 
   VPCCIDR:
     AllowedPattern: ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/(1[6-9]|2[0-8]))$
@@ -327,15 +327,11 @@ Parameters:
     Description: The EC2 instance type for the OpenShift master instances.
     Type: String
   OCSInstanceType:
-    Default: m4.4xlarge
+    Default: m5.4xlarge
     AllowedValues:
-      - m4.4xlarge
-      - m4.8xlarge
-      - m4.10xlarge
       - m5.4xlarge
       - m5.8xlarge
       - m5.12xlarge
-      - c4.8xlarge
       - c5.8xlarge
       - c5.12xlarge
       - c5.9xlarge
@@ -346,11 +342,8 @@ Parameters:
     Description: The EC2 instance type for the OpenShift Data Foundation instances.
     Type: String
   ComputeInstanceType:
-    Default: m4.4xlarge
+    Default: m5.4xlarge
     AllowedValues:
-      - m4.xlarge
-      - m4.2xlarge
-      - m4.4xlarge
       - m5.4xlarge
       - m5.8xlarge
       - m5.12xlarge
@@ -384,12 +377,12 @@ Parameters:
   ICPDDeploymentLogsBucketName:
     Description: 'The name of the S3 bucket where IBM Cloud Pak for Business Automation deployment logs are to be exported. The deployment logs provide a record of the boot strap scripting actions and are useful for problem determination if the deployment fails in some way.'
     Type: String
-    
+
 
   DomainName:
     Description: 'Amazon Route 53 base domain configured for your OpenShift Container Platform cluster. Name must consist of lower case alphanumeric characters and must start and end with an alphanumeric character.'
     Type: String
-    
+
 
   ClusterName:
     Description: Custom cluster name for kubernetes.io/cluster/tags. Can include lowercase letters (a-z), numbers (0-9), and dashes (-) and maximum of 21 characters.
@@ -398,7 +391,9 @@ Parameters:
   OpenshiftVersion:
     Description: Choose Openshift Version.The Support is limited to the version set by default
     Type: String
-    Default: "4.10.37"
+    AllowedValues:
+      - "4.12.30"
+    Default: "4.12.30"
   OpenshiftUsername:
     Description: Username to be used to login to Openshift Console.
     Type: String
@@ -407,7 +402,7 @@ Parameters:
     Description: Password to be used to login to Openshift and Cloud Pak for Business Automation Console.
     Type: String
     NoEcho: 'true'
-    
+
 
   EnableFips:
     Description: Enable FIPS for Openshift
@@ -417,7 +412,7 @@ Parameters:
       - "true"
     Default: "false"
 
-  PrivateCluster:  
+  PrivateCluster:
     Description: Choose true to deploy a private cluster. For details visit OpenShift documentation (https://docs.openshift.com/container-platform/4.10/installing/installing_aws/installing-aws-private.html)
     Type: String
     AllowedValues:
@@ -435,7 +430,7 @@ Parameters:
           /saplibs/libicudata.so.50
           /saplibs/...
       Then you need to put the compressed package on an annoymously accesible web server and provide the link here.
-      The CR can handle .zip files using unzip as well as .tar, .tar.gz, .tar.bz2, .tar.xz. Does not handle .gz files, .bz2 files, .xz, or .zst files that do not contain a .tar archive.    
+      The CR can handle .zip files using unzip as well as .tar, .tar.gz, .tar.bz2, .tar.xz. Does not handle .gz files, .bz2 files, .xz, or .zst files that do not contain a .tar archive.
     Type: String
     Default: ""
 
@@ -485,13 +480,13 @@ Parameters:
   VPCPeeringRouteTable:
     Description: Enter all VPC route table IDs that are used by database server and active directory for VPC peering. Please enter IDs with comma seperated. (rtb-1234, rtb-5678)
     Type: String
-  
+
   VPCPeeringCidrBlock:
     Description: Enter the VPC IPv4 CIDR that the database server is located in for VPC peering.
     Type: String
 
   DBPort:
-    Description: Enter the database server port number to connect to 
+    Description: Enter the database server port number to connect to
     Type: String
     Default: "5432"
 
@@ -500,17 +495,17 @@ Parameters:
     Type: String
 
   Patterns:
-    Description: >- 
+    Description: >-
       Select the Cloud Pak for Business Automation capability to install
     Type: List<String>
-    AllowedValues: 
+    AllowedValues:
       - FileNet Content Manager
       - Operational Decision Manager
       - Business Automation Workflow Runtime
       - Business Automation Workflow Authoring
 
-  ContentOptionalComponents: 
-    Description: >- 
+  ContentOptionalComponents:
+    Description: >-
       Enable or disable optional components for FileNet Content Manager (FNCM) for production deployment.
     Type: List<String>
     AllowedValues:
@@ -590,62 +585,43 @@ Mappings:
 
   AWSAMIRegionMap:
     us-east-1:
-      BootNodeAmiId: ami-071ce2feb91127aab
-      COREOS: ami-0453a93ae6e00f8ec
+      BootNodeAmiId: ami-03097f1135b3efd06
     af-south-1:
       BootNodeAmiId: ami-01c6263caf782e4b8
-      COREOS: ami-030ac20a40afdf914
     ap-east-1:
       BootNodeAmiId: ami-01540d0b1a8b63dc2
-      COREOS: ami-0df173442bdebd9c1
     ap-northeast-1:
       BootNodeAmiId: ami-0f026bd8fb28f8fb6
-      COREOS: ami-04ff2669257d8d5d8
     ap-northeast-2:
       BootNodeAmiId: ami-091d9580ee0f55bab
-      COREOS: ami-00a80f453190d3ec0
     ap-south-1:
       BootNodeAmiId: ami-0c511f695d5c1312c
-      COREOS: ami-0bae2c77c246b0064
     ap-southeast-1:
       BootNodeAmiId: ami-0a58a9f869c677b53
-      COREOS: ami-0c6ad4ce896eac960
     ap-southeast-2:
       BootNodeAmiId: ami-07a0bf5cbe4e68d87
-      COREOS: ami-0d422b9e0b210e523
     ca-central-1:
       BootNodeAmiId: ami-026c7d1c371e31d87
-      COREOS: ami-07575d6f19a81ee9b
     eu-central-1:
       BootNodeAmiId: ami-0812c9a182f01cad6
-      COREOS: ami-0a6d4066422e160e0
     eu-north-1:
       BootNodeAmiId: ami-096ec85aca0789fcc
-      COREOS: ami-0ba2db1b5fb2e9938
     eu-south-1:
       BootNodeAmiId: ami-0e0e9c8193ba46d4e
-      COREOS: ami-082f780ee0812a8eb
     eu-west-1:
       BootNodeAmiId: ami-013891978bcf167a3
-      COREOS: ami-061c8f75631efc716
     eu-west-2:
       BootNodeAmiId: ami-04ce6570af3f361c9
-      COREOS: ami-0e1ea4456d63feb2b
     eu-west-3:
       BootNodeAmiId: ami-033a783c48c753ffd
-      COREOS: ami-0cd5a3d0291b77435
     sa-east-1:
       BootNodeAmiId: ami-03aa90d22065dba3d
-      COREOS: ami-0a6f0c83249a39754
     us-east-2:
       BootNodeAmiId: ami-008608b8cc732b081
-      COREOS: ami-08c331fe7429f135c
     us-west-1:
       BootNodeAmiId: ami-0718ab368a13aa859
-      COREOS: ami-05fd245f821708687
     us-west-2:
-      BootNodeAmiId: ami-0e4efe5c3ef3fd100
-      COREOS: ami-01f98ae947d844724
+      BootNodeAmiId: ami-0ab6c20d218729102
 
 
 Rules:
@@ -656,7 +632,7 @@ Rules:
         Fn::Contains:
         - - Accept
         - Ref: LicenseAgreement
-      AssertDescription: User must agree to the terms of the license agreement. 
+      AssertDescription: User must agree to the terms of the license agreement.
 
   EmptyValues:
     Assertions:
@@ -730,7 +706,7 @@ Resources:
           - ""
         ## Public  PublicSubnetRouteTable
         PublicSubnetRouteTable:  !GetAtt 'VPCStack.Outputs.PublicSubnetRouteTable'
-                
+
   CPBAIAMUser:
     Type: 'AWS::IAM::User'
     Properties:
@@ -787,7 +763,7 @@ Resources:
                 Action:
                   - logs:FilterLogEvents
                 Resource:
-                  - '*' 
+                  - '*'
 
   BootNodeIamRole:
     Type: AWS::IAM::Role
@@ -824,7 +800,7 @@ Resources:
             - "secretsmanager:GetSecretValue"
             - "secretsmanager:UpdateSecret"
             Resource:
-            - !Ref CPBASecret  
+            - !Ref CPBASecret
             - !Ref AWSCredentialSecret
             - !Ref OpenshiftSecret
           - Effect: "Allow"
@@ -839,7 +815,7 @@ Resources:
             - ssm:PutParameter
             - ssm:GetParameter
             Resource:
-            - '*'  
+            - '*'
 
 
   OpenshiftURL:
@@ -895,7 +871,7 @@ Resources:
   AWSCredentialSecret:
     Type: "AWS::SecretsManager::Secret"
     Properties:
-      SecretString: !Sub 
+      SecretString: !Sub
         - '{"aws_secret_access_key":"${CPBAIAMUserAccessKey}, "aws_access_key_id":"${CPBAIAMUserSecret}"}'
         - {CPBAIAMUserAccessKey: !Ref CPBAIAMUserAccessKey, CPBAIAMUserSecret: !GetAtt [CPBAIAMUserAccessKey, SecretAccessKey]}
 
@@ -914,7 +890,7 @@ Resources:
                 AWS_REGION=${AWS::Region}
                 AWS_STACKID="${AWS::StackId}"
                 AWS_STACKNAME="${AWS::StackName}"
-            
+
             /home/ec2-user/destroy.sh:
               content: |
                 echo "$1 - Destroy"
@@ -926,16 +902,16 @@ Resources:
               content: !Sub |
                 [default]
                 region=${AWS::Region}
-                
+
             /root/.aws/credentials:
-              content: 
-                !Sub 
-                - |  
+              content:
+                !Sub
+                - |
                   [default]
                   aws_access_key_id=${CPBAIAMUserAccessKey}
                   aws_secret_access_key=${CPBAIAMUserSecret}
-                - 
-                  CPBAIAMUserAccessKey: !Ref CPBAIAMUserAccessKey 
+                -
+                  CPBAIAMUserAccessKey: !Ref CPBAIAMUserAccessKey
                   CPBAIAMUserSecret: !GetAtt [CPBAIAMUserAccessKey, SecretAccessKey]
 
     Properties:
@@ -945,14 +921,14 @@ Resources:
         - DeviceName: /dev/sda1
           Ebs:
             VolumeSize: 50
-            VolumeType: gp2    
+            VolumeType: gp2
       IamInstanceProfile: !Ref BootnodeInstanceProfile
       Tags:
         - Key: Name
-          Value: 
+          Value:
             !Sub
             - "${ClusterName}-bootnode"
-            - ClusterName: !Ref ClusterName 
+            - ClusterName: !Ref ClusterName
       InstanceType: i3.large
       NetworkInterfaces:
       - GroupSet:
@@ -963,14 +939,14 @@ Resources:
         SubnetId: !GetAtt 'VPCStack.Outputs.PublicSubnet1ID'
       UserData:
         Fn::Base64:
-          !Sub 
+          !Sub
           - |
             #!/bin/bash -x
             git clone https://github.com/aws-quickstart/quickstart-linux-utilities.git
-            sed -i "s/aws-cfn-bootstrap-latest.tar.gz/aws-cfn-bootstrap-py3-latest.tar.gz/g" /quickstart-linux-utilities/quickstart-cfn-tools.source 
+            sed -i "s/aws-cfn-bootstrap-latest.tar.gz/aws-cfn-bootstrap-py3-latest.tar.gz/g" /quickstart-linux-utilities/quickstart-cfn-tools.source
             export P=/quickstart-linux-utilities/quickstart-cfn-tools.source
             source $P
-            
+
             qs_bootstrap_pip || qs_err " pip bootstrap failed "
             qs_aws-cfn-bootstrap || qs_err "cfn bootstrap failed"
             pip3 install awscli  &> /var/log/userdata.awscli_install.log || qs_err " awscli install failed "
@@ -995,7 +971,7 @@ Resources:
 
             cd /home/ec2-user/cp4ba-deployment/selfmanaged-openshift/aws
             export HOME=~
-            
+
             aws s3 cp ${RedhatPullSecret} ./pull-secret
             export TF_VAR_openshift_pull_secret_file_path='./pull-secret'
             export TF_VAR_access_key_id=${CPBAIAMUserAccessKey}
@@ -1014,7 +990,7 @@ Resources:
             export TF_VAR_accept_cpd_license='reject'
 
             export TF_VAR_watson_knowledge_catalog='no'
-            export TF_VAR_cognos_dashboard_embedded='no' 
+            export TF_VAR_cognos_dashboard_embedded='no'
             export TF_VAR_watson_ai_openscale='no'
             export TF_VAR_watson_studio='no'
             export TF_VAR_analytics_engine='no'
@@ -1052,8 +1028,8 @@ Resources:
             export NewVPCPeeringRouteTable=$(echo $rtb_new | cut -c 3-)
             export TF_VAR_vpc_peering_route_table=[$NewVPCPeeringRouteTable]
             export TF_VAR_vpc_peering_id=${VpcPeeringId}
-            
-            export TF_VAR_ocs='{enable = "true", ami_id = "${AMI_ID}", dedicated_node_instance_type = "${OCSInstanceType}"}'
+
+            export TF_VAR_ocs='{enable = "true", ami_id = "", ami_most_recent="true", ami_owner="531415883065", ami_name_filter="rhcos-412.86*x86_64", dedicated_node_instance_type = "${OCSInstanceType}" }'
 
             echo "Creating terraform variables file"
 
@@ -1062,7 +1038,7 @@ Resources:
             echo "db_security_group=\"${DBSecuritGroup}\"" >> terraform_vars.tfvars
             echo "vpc_peering_route_table=[$NewVPCPeeringRouteTable]" >> terraform_vars.tfvars
             echo "vpc_peering_id=\"${VpcPeeringId}\"" >> terraform_vars.tfvars
-            
+
             echo "access_key_id=\"${CPBAIAMUserAccessKey}\"" >> terraform_vars.tfvars
             echo "secret_access_key=\"${CPBAIAMUserSecret}\"" >> terraform_vars.tfvars
             echo "region=\"${AWS::Region}\"" >> terraform_vars.tfvars
@@ -1112,7 +1088,7 @@ Resources:
             echo "cpd_version=\"\"" >> terraform_vars.tfvars
             echo "storage_option=\"ocs\"" >> terraform_vars.tfvars
 
-            echo "ocs={\"enable\" = \"true\", \"ami_id\" = \"${AMI_ID}\", \"dedicated_node_instance_type\" = \"${OCSInstanceType}\"}" >> terraform_vars.tfvars
+            echo "ocs={\"enable\" = \"true\", \"ami_id\" = \"\", \"ami_most_recent\" = \"true\", \"ami_owner\" = \"531415883065\", \"ami_name_filter\" = \"rhcos-412.86*x86_64\", \"dedicated_node_instance_type\" = \"${OCSInstanceType}\"}" >> terraform_vars.tfvars
 
             echo "enable_permission_quota_check=\"false\"" >> terraform_vars.tfvars
             export TF_VAR_enable_permission_quota_check=false
@@ -1122,7 +1098,7 @@ Resources:
             terraform plan -out=tfplan -input=false
             terraform apply -input=false tfplan
             ecode=$?
-            
+
 
             # Starting
             export CP4BA_AUTO_PLATFORM="OCP"
@@ -1152,6 +1128,8 @@ Resources:
             export OPTIONAL_COMP_SELECTED="${BAWRuntimeOptionalString},${BAWAuthoringOptionalString},${ContentOptionalString},${ODMOptionalString}"
             export PATTERN_STRING_SELECTED="${PatternString}"
             export CP4BA_SKIP_SUMMARY="Yes"
+            export USE_DEFAULT_IAM_ADMIN=No
+            export NON_DEFAULT_IAM_ADMIN=iamadmin
 
             cd /home/ec2-user/cert-kubernetes/scripts
             cp /home/ec2-user/cp4ba-deployment/selfmanaged-openshift/aws/scripts/aws_user_data_generate_silent_install.sh ./
@@ -1163,16 +1141,14 @@ Resources:
 
             aws s3 cp /home/ec2-user/cp4ba-deployment/selfmanaged-openshift/aws/.trace.log s3://${ICPDDeploymentLogsBucketName}/cp4ba-trace.log
             aws s3 cp /var/log/cloud-init-output.log s3://${ICPDDeploymentLogsBucketName}/cp4ba-bootstrap.log
-            
+
             cp -rf ~/.kube/ /home/ec2-user/
-            
+
             chown -R ec2-user:ec2-user /home/ec2-user/.kube
 
-            aws s3 cp /home/ec2-user/cp4ba-deployment/selfmanaged-openshift/aws/.trace2.log s3://${ICPDDeploymentLogsBucketName}/trace2.log
             /usr/local/bin/cfn-signal --exit-code $ecode --id $AWS_STACKID  --data "See logs at ${ICPDDeploymentLogsBucketName}/cp4ba-bootstrap.log" $ICPDInstallationCompletedURL
           -
-            AMI_ID: !FindInMap [AWSAMIRegionMap, !Ref "AWS::Region", COREOS]
-            CPBAIAMUserAccessKey: !Ref CPBAIAMUserAccessKey 
+            CPBAIAMUserAccessKey: !Ref CPBAIAMUserAccessKey
             CPBAIAMUserSecret: !GetAtt [CPBAIAMUserAccessKey, SecretAccessKey]
             AZ: !If [ 3AZCondition , 'multi_zone', 'single_zone']
             AvailabilityZone1: !Select [0, !Ref AvailabilityZones]
@@ -1237,20 +1213,20 @@ Resources:
                     print(response)
                     current_status = "WAIT"
                     final_status = "READY"
-                    parameterName = stackname+"_CleanupStatus"           
+                    parameterName = stackname+"_CleanupStatus"
                     response = ssm.put_parameter(Name=parameterName,
                            Description="Waiting for CleanupStatus to be READY",
                            Value=current_status,
                            Type='String',
-                           Overwrite=True)        
-                    print(response)    
+                           Overwrite=True)
+                    print(response)
                     while(current_status!=final_status):
-                      time.sleep(30) 
+                      time.sleep(30)
                       response = ssm.get_parameter(Name=parameterName)
                       parameter = response.get('Parameter')
                       current_status = parameter.get('Value')
                       print(current_status)
-                    ssm.delete_parameter(Name=parameterName)    
+                    ssm.delete_parameter(Name=parameterName)
               except Exception as e:
                 print(e)
                 traceback.print_exc()
@@ -1265,22 +1241,22 @@ Resources:
       Role: !GetAtt 'LambdaExecutionRole.Arn'
       Runtime: python3.8
       Timeout: 600
-             
+
   Cleanup :
     Type: Custom::Cleanup
     Properties:
       DependsOn: BootnodeInstance
       ServiceToken: !GetAtt 'CleanUpLambda.Arn'
- 
+
   ICPDInstallationCompletedHandle:
-    Type: AWS::CloudFormation::WaitConditionHandle  
+    Type: AWS::CloudFormation::WaitConditionHandle
 
   ICPDInstallationCompleted:
     Type: AWS::CloudFormation::WaitCondition
     Properties:
       Count: 1
       Handle: !Ref ICPDInstallationCompletedHandle
-      Timeout: '30000'  
+      Timeout: '30000'
 
 Outputs:
   BootnodeInstanceId:
@@ -1293,11 +1269,7 @@ Outputs:
 
   OpenshiftURLValue:
     Description: The URL for the OpenShift UI.
-    Value: !GetAtt OpenshiftURL.Value  
-  
-  ICPBAWebClientURL:
-    Description: CloudPak for Business Automation web client URL.
-    Value: !GetAtt CPDURL.Value
+    Value: !GetAtt OpenshiftURL.Value
 
   ICPBAWebClientPassword :
     Description: CloudPak for Business Automation web client Password.
@@ -1305,7 +1277,7 @@ Outputs:
 
   OpenshiftUsername:
     Description: OpenShift username secret.
-    Value: !Ref OpenshiftUsername 
+    Value: !Ref OpenshiftUsername
 
   OpenshiftPassword:
     Description: OpenShift password secret.

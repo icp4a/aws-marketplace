@@ -16,13 +16,13 @@ Metadata:
           - PublicSubnetRouteTable
           - PrivateSubnet1ARouteTableId
           - PrivateSubnet2ARouteTableId
-          - PrivateSubnet3ARouteTableId 
+          - PrivateSubnet3ARouteTableId
 
     ParameterLabels:
       VPCID:
         default: VPC ID [required]
       NumberOfAZs:
-        default: Number of Availability Zones [required]  
+        default: Number of Availability Zones [required]
       PublicSubnetRouteTable:
         default: Public Subnet route table id
       VPCPeering:
@@ -64,7 +64,7 @@ Parameters:
   VPCPeering:
     Description: The ID of your VPC for peering
     Type: AWS::EC2::VPC::Id
-  
+
   VPCPeeringCidrBlock:
     Description: Enter the RDS VPC private subnet cidr block to update the route table of new VPC
     Type: String
@@ -99,7 +99,7 @@ Resources:
       VpcPeeringConnectionId: !GetAtt 'VPCPeeringConnection.Id'
       DestinationCidrBlock: !Ref 'VPCPeeringCidrBlock'
       RouteTableId: !Ref 'PublicSubnetRouteTable'
-  ## End of Public 
+  ## End of Public
 
   VPCUpdateRequesterPeeringRouteTable1A:
     Type: AWS::EC2::Route
@@ -114,7 +114,7 @@ Resources:
     Condition: PeeringCondition&3AZCondition
     Properties:
       VpcPeeringConnectionId: !GetAtt 'VPCPeeringConnection.Id'
-      DestinationCidrBlock: !Ref 'VPCPeeringCidrBlock' 
+      DestinationCidrBlock: !Ref 'VPCPeeringCidrBlock'
       RouteTableId: !Ref 'PrivateSubnet2ARouteTableId'
 
   VPCUpdateRequesterPeeringRouteTable3A:
@@ -122,7 +122,7 @@ Resources:
     Condition: PeeringCondition&3AZCondition
     Properties:
       VpcPeeringConnectionId: !GetAtt 'VPCPeeringConnection.Id'
-      DestinationCidrBlock: !Ref 'VPCPeeringCidrBlock' 
+      DestinationCidrBlock: !Ref 'VPCPeeringCidrBlock'
       RouteTableId: !Ref 'PrivateSubnet3ARouteTableId'
 
 Outputs:
