@@ -1,4 +1,23 @@
 ####################################################
+## USER Property for Workflow under Content initialization ##
+####################################################
+## Make sure CONTENT_INITIALIZATION in content.property file is enabled before filling out this section. If CONTENT_INITIALIZATION is disabled, this section can be ignored.
+## Specify whether to enable workflow for the object store, the default vaule is "Yes"
+CONTENT_INITIALIZATION.CPE_OBJ_STORE_ENABLE_WORKFLOW="Yes"
+
+## Specify a table space for the workflow data.
+CONTENT_INITIALIZATION.CPE_OBJ_STORE_WORKFLOW_DATA_TBL_SPACE="bawtos_tbs"
+
+## Designate an LDAP group for the workflow admin group.
+CONTENT_INITIALIZATION.CPE_OBJ_STORE_WORKFLOW_ADMIN_GROUP="<Required>"
+
+## Designate an LDAP group for the workflow config group
+CONTENT_INITIALIZATION.CPE_OBJ_STORE_WORKFLOW_CONFIG_GROUP="<Required>"
+
+## Provide a name for the connection point
+CONTENT_INITIALIZATION.CPE_OBJ_STORE_WORKFLOW_PE_CONN_POINT_NAME="<Required>"
+
+####################################################
 ## USER Property for BAS ##
 ####################################################
 ## Designate an existing LDAP user for the BAStudio admin user.
