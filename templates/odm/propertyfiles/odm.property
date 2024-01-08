@@ -1,1 +1,21 @@
-# No special property required for ODM
+## NOTE: Please delete the below section and leave this property file blank if deploying ODM with FNCM. If deploying ODM only, please fill out the below section.
+####################################################
+## USER Property for BAN ##
+####################################################
+## Provide the user name for the Navigator administrator. For example: "BANAdmin"
+BAN.APPLOGIN_USER="<Required>"
+
+## Provide the user password for the Navigator administrator.
+BAN.APPLOGIN_PASSWORD="<Required>"
+
+## Provide LTPA key password for BAN deployment.
+BAN.LTPA_PASSWORD="<Required>"
+
+## Provide keystore password for BAN deployment.
+BAN.KEYSTORE_PASSWORD="<Required>"
+
+## Provide the user name for jMail used by BAN. For example: "jMailAdmin"
+BAN.JMAIL_USER_NAME="<Optional>"
+
+## Provide the user password for jMail used by BAN.
+BAN.JMAIL_USER_PASSWORD="<Optional>"

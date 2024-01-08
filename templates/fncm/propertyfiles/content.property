@@ -42,21 +42,6 @@ CONTENT_INITIALIZATION.LDAP_ADMINS_GROUPS_NAME="<Required>"
 ## user name and group name for object store admin, for example, "CEAdmin" or "P8Administrators". This parameter accepts comma-separated lists, for example, "P8Group1, P8Group2"
 CONTENT_INITIALIZATION.CPE_OBJ_STORE_ADMIN_USER_GROUPS="<Required>"
 
-## Specify whether to enable workflow for the object store, the default vaule is "Yes"
-CONTENT_INITIALIZATION.CPE_OBJ_STORE_ENABLE_WORKFLOW="Yes"
-
-## Specify a table space for the workflow data.
-CONTENT_INITIALIZATION.CPE_OBJ_STORE_WORKFLOW_DATA_TBL_SPACE="bawtos_tbs"
-
-## Designate an LDAP group for the workflow admin group.
-CONTENT_INITIALIZATION.CPE_OBJ_STORE_WORKFLOW_ADMIN_GROUP="<Required>"
-
-## Designate an LDAP group for the workflow config group
-CONTENT_INITIALIZATION.CPE_OBJ_STORE_WORKFLOW_CONFIG_GROUP="<Required>"
-
-## Provide a name for the connection point
-CONTENT_INITIALIZATION.CPE_OBJ_STORE_WORKFLOW_PE_CONN_POINT_NAME="<Required>"
-
 ####################################################
 ## USER Property for BAN ##
 ####################################################
