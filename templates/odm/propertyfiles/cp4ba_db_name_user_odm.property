@@ -5,11 +5,9 @@
 dbserver1.ODM_DB_NAME="ODMDB"
 ## Provide the user name of the database for ODM. For example: "dbuser1"
 dbserver1.ODM_DB_USER_NAME="<youruser1>"
-## Provide the password of the database user for ODM. 
-dbserver1.ODM_DB_USER_PASSWORD="<yourpassword>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) of the database user for ODM. 
+dbserver1.ODM_DB_USER_PASSWORD="{Base64}<yourpassword>"
 
-
-## NOTE: Please delete the below section if deploying ODM with FNCM. If deploying ODM only, please fill out the below section.
 ####################################################
 ## BAN's Property for ICN Database Name and User on postgresql type database ##
 ####################################################
@@ -17,5 +15,5 @@ dbserver1.ODM_DB_USER_PASSWORD="<yourpassword>"
 dbserver1.ICN_DB_NAME="ICNDB"
 ## Provide the user name of the database for ICN (Navigator). For example: "dbuser1"
 dbserver1.ICN_DB_USER_NAME="<youruser1>"
-## Provide the password of the database user for ICN (Navigator). 
-dbserver1.ICN_DB_USER_PASSWORD="<yourpassword>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) of the database user for ICN (Navigator). 
+dbserver1.ICN_DB_USER_PASSWORD="{Base64}<yourpassword>"

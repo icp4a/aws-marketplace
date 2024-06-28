@@ -1,0 +1,28 @@
+## Please input the value for the multiple database server/instance name, this key supports comma-separated lists. ##
+## (NOTES: The value (CAN NOT CONTAIN DOT CHARACTER) is alias name for database server/instance, it is not real database server/instance host name.) ##
+DB_SERVER_LIST="dbserver1"
+
+####################################################
+## Property for Database Server "dbserver1" required by IBM Cloud Pak for Business Automation on postgresql type database ##
+####################################################
+## Provide the database type from your infrastructure. The possible values are "db2" or "db2HADR" or "oracle" or "sqlserver" "postgresql".
+dbserver1.DATABASE_TYPE="postgresql"
+
+## Provide the database server name or IP address of the database server.
+dbserver1.DATABASE_SERVERNAME="<Required>"
+
+## Provide the database server port. For Db2, the default is "50000". For Oracle, the default is "1521"
+dbserver1.DATABASE_PORT="<Required>"
+
+## The parameter is used to support database connection over SSL for database. Default value is "true"
+dbserver1.DATABASE_SSL_ENABLE="True"
+
+## In this release, only server authentication is supported.  Please do not change this default value, which is "False"
+dbserver1.POSTGRESQL_SSL_CLIENT_SERVER="False"
+
+## The name of the secret that contains the DB2/Oracle/MSSQLServer/PostgreSQL SSL certificate.
+dbserver1.DATABASE_SSL_SECRET_NAME="ibm-cp4ba-db-ssl-secret-for-alias"
+
+## If POSTGRESQL_SSL_CLIENT_SERVER is "True" and DATABASE_SSL_ENABLE is "True", please get "<your-server-certification: root.crt>" "<your-client-certification: client.crt>" "<your-client-key: client.key>" from server and client, and copy into this directory.Default value is "/root/cert-kubernetes/scripts/cp4ba-prerequisites/propertyfile/cert/db/dbserver1".
+## If POSTGRESQL_SSL_CLIENT_SERVER is "False" and DATABASE_SSL_ENABLE is "True", please get the SSL certificate file (rename db-cert.crt) from server and then copy into this directory.Default value is "/root/cert-kubernetes/scripts/cp4ba-prerequisites/propertyfile/cert/db/dbserver1".
+dbserver1.DATABASE_SSL_CERT_FILE_FOLDER="/root/cert-kubernetes/scripts/cp4ba-prerequisites/propertyfile/cert/db/dbserver1"

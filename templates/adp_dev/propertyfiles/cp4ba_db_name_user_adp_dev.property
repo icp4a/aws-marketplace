@@ -1,0 +1,116 @@
+####################################################
+## FNCM's Property for GCD Database Name and User on postgresql type database ##
+####################################################
+## Provide the name of the database for the GCD of P8Domain. For example: "gcddb" (Notes: the database name must be lowercase)
+dbserver1.GCD_DB_NAME="gcddb"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.GCD_DB_CURRENT_SCHEMA="<Optional>"
+## Provide the user name of the database for the GCD of P8Domain. For example: "dbuser1"
+dbserver1.GCD_DB_USER_NAME="<youruser1>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) of the database user for the GCD of P8Domain.
+dbserver1.GCD_DB_USER_PASSWORD="{Base64}<yourpassword>"
+
+###################################################
+## FNCM's Property for Object store Database Name and User on postgresql type database ##
+###################################################
+## Provide the name of the database for the Object Store of P8Domain. For example: "os1db" (Notes: the database name must be lowercase)
+dbserver1.OS1_DB_NAME="os1db"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.OS1_DB_CURRENT_SCHEMA="<Optional>"
+## Provide the user name of the database for the Object Store of P8Domain. For example: "dbuser1"
+dbserver1.OS1_DB_USER_NAME="<youruser1>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) of the database user for the Object Store of P8Domain. 
+dbserver1.OS1_DB_USER_PASSWORD="{Base64}<yourpassword>"
+## If this is a object store for the ADP, set as "True" to initialize object store for the document processing code module creation.
+dbserver1.OS1_ENABLE_DOCUMENT_PROCESSING="False"
+
+## Provide the name of the database for the object store required by ADP. For example: "devos1" (Notes: the database name must be lowercase)
+dbserver1.DEVOS_DB_NAME="devos1"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.DEVOS_DB_CURRENT_SCHEMA="<Optional>"
+## Provide the user name for the object store database required by ADP. For example: "dbuser1"
+dbserver1.DEVOS_DB_USER_NAME="<youruser1>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the user of Object Store of P8Domain.
+dbserver1.DEVOS_DB_USER_PASSWORD="{Base64}<yourpassword>"
+
+## Provide the name of the database for the object store required by AE Data Persistent. For example: "aeos" (Notes: the database name must be lowercase)
+dbserver1.AEOS_DB_NAME="aeos"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.AEOS_DB_CURRENT_SCHEMA="<Optional>"
+## Provide the user name of the database for the object store required by AE Data Persistent. For example: "dbuser1"
+dbserver1.AEOS_DB_USER_NAME="<youruser1>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the user of Object Store of P8Domain. 
+dbserver1.AEOS_DB_USER_PASSWORD="{Base64}<yourpassword>"
+
+####################################################
+## BAN's Property for ICN Database Name and User on postgresql type database ##
+####################################################
+## Provide the name of the database for ICN (Navigator). For example: "icndb" (Notes: the database name must be lowercase)
+dbserver1.ICN_DB_NAME="icndb"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.ICN_DB_CURRENT_SCHEMA="<Optional>"
+## Provide the user name of the database for ICN (Navigator). For example: "dbuser1"
+dbserver1.ICN_DB_USER_NAME="<youruser1>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) of the database user for ICN (Navigator). 
+dbserver1.ICN_DB_USER_PASSWORD="{Base64}<yourpassword>"
+
+####################################################
+## Document Processing's Property for Document Processing Engine (DPE) databases on postgresql type database ##
+####################################################
+## Provide the database name for Document Processing Engine Base database. (For DB2, name must be 8 chars or less, no special chars.) For example: "adpbase"
+dbserver1.ADP_BASE_DB_NAME="adpbase"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.ADP_BASE_DB_CURRENT_SCHEMA="<Optional>"
+## Provide the user name for the Document Processing Engine Base database. Must be an existing user. For example: "dbuser1"
+dbserver1.ADP_BASE_DB_USER_NAME="<youruser1>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the Document Processing Engine Base database. 
+dbserver1.ADP_BASE_DB_USER_PASSWORD="{Base64}<yourpassword>"
+
+## Important: The keys below for Document Processing Engine Project databases support comma-separated lists. The number of values should match in each comma-separated list.
+## Provide the database names for the Document Processing Engine Project databases. (For DB2, name must be 8 chars or less, no special chars.) You need two databases per document processing project. Example: "proj1,proj2"
+ADP_PROJECT_DB_NAME="proj1,proj2"
+## Provide the database server(s) for the Document Processing Engine Project databases.  Must match the value of "DB_SERVER_LIST" defined in cp4ba_db_server.property. Example: "DBSERVER1,DBSERVER2"
+ADP_PROJECT_DB_SERVER="dbserver1,dbserver1"
+## Provide the user names for the Document Processing Engine Project databases.  Must be existing users. Example: "dbuser1,dbuser2"
+ADP_PROJECT_DB_USER_NAME="<youruser1>,<youruser2>"
+## Provide the passwords (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the Document Processing Engine Project databases. Example: "mypwd1,mypwd2"
+ADP_PROJECT_DB_USER_PASSWORD="{Base64}<yourpassword1>,{Base64}<yourpassword2>"
+## Provide the ontology name for each Document Processing Engine Project database. (Must be 8 characters or less, no special chars.) Example: "ont1,ont1"
+## You can leave the default values for property below. The name of ontology can be same for all the databases.
+ADP_PROJECT_ONTOLOGY="ont1,ont1"
+
+####################################################
+## Application Engine's Property for Application Engine database required on postgresql type database ##
+####################################################
+## Provide the database name for runtime application engine. For example: "aaedb" (Notes: the database name must be lowercase)
+dbserver1.APP_ENGINE_DB_NAME="aaedb"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.APP_ENGINE_DB_CURRENT_SCHEMA="<Optional>"
+## Provide the user name of the database for the Application Engine database. For example: "dbuser1"
+dbserver1.APP_ENGINE_DB_USER_NAME="<youruser1>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the user of Application Engine database. 
+dbserver1.APP_ENGINE_DB_USER_PASSWORD="{Base64}<yourpassword>"
+
+####################################################
+## Property for Application Engine Playback database on postgresql type database ##
+####################################################
+## Provide the database name for Application Engine Playback database. For example: "appdb" (Notes: the database name must be lowercase)
+dbserver1.APP_PLAYBACK_DB_NAME="appdb"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.APP_PLAYBACK_DB_CURRENT_SCHEMA="<Optional>"
+## Provide the user name of the database for Application Engine Playback database . For example: "dbuser1"
+dbserver1.APP_PLAYBACK_DB_USER_NAME="<youruser1>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the user of Application Engine Playback database . 
+dbserver1.APP_PLAYBACK_DB_USER_PASSWORD="{Base64}<yourpassword>"
+
+####################################################
+## Business Automation Studio's Property for Studio database required on postgresql type database ##
+####################################################
+## Provide the database name for Business Automation Studio database. For example: "basdb" (Notes: the database name must be lowercase)
+dbserver1.STUDIO_DB_NAME="basdb"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.STUDIO_DB_CURRENT_SCHEMA="<Optional>"
+## Provide the user name of the database for the Business Automation Studio database. For example: "dbuser1"
+dbserver1.STUDIO_DB_USER_NAME="<youruser1>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the user of Business Automation Studio database.
+dbserver1.STUDIO_DB_USER_PASSWORD="{Base64}<yourpassword>"

@@ -5,7 +5,7 @@
 DB_SERVER_LIST="dbserver1"
 
 ## Provide the database type from your infrastructure. The possible values are "db2" or "db2HADR" or "oracle" or "sqlserver" "postgresql". In this release only postgresql is supported.
-dbserver1.DATABASE_TYPE="postgresql"
+dbserver1.DATABASE_TYPE="<Required>"
 
 ## Provide the database server name or IP address of the database server.
 dbserver1.DATABASE_SERVERNAME="<Required>"
@@ -23,5 +23,5 @@ dbserver1.POSTGRESQL_SSL_CLIENT_SERVER="False"
 dbserver1.DATABASE_SSL_SECRET_NAME="ibm-cp4ba-db-ssl-secret-for-alias"
 
 ## Only server authentication is supported in this release.
-## If DATABASE_SSL_ENABLE is "True", please get the SSL certificate file from server and upload it to your Amazon S3 bucket, then copy your S3 URI below.
-dbserver1.DATABASE_SSL_CERT_FILE_FOLDER="s3://yours3bucket/example.crt"
+## If DATABASE_SSL_ENABLE is "True", please get the SSL certificate file from your database server and rename it to db-cert.crt, then upload it to your Amazon S3 bucket folder (all files in the folder will be copied), then copy your S3 URI below.
+dbserver1.DATABASE_SSL_CERT_FILE_FOLDER="s3://yours3bucket/folder-name/"

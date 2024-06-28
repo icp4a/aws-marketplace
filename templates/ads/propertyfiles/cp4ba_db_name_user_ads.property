@@ -1,0 +1,35 @@
+####################################################
+## BAN's Property for ICN Database Name and User on postgresql type database ##
+####################################################
+## Provide the name of the database for ICN (Navigator). For example: "icndb" (Notes: the database name must be lowercase)
+dbserver1.ICN_DB_NAME="icndb"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.ICN_DB_CURRENT_SCHEMA="<Optional>"
+## Provide the user name of the database for ICN (Navigator). For example: "dbuser1"
+dbserver1.ICN_DB_USER_NAME="<youruser1>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) of the database user for ICN (Navigator).
+dbserver1.ICN_DB_USER_PASSWORD="{Base64}<yourpassword>"
+
+####################################################
+## Property for Application Engine Playback database on postgresql type database ##
+####################################################
+## Provide the database name for Application Engine Playback database. For example: "appdb" (Notes: the database name must be lowercase)
+dbserver1.APP_PLAYBACK_DB_NAME="appdb"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.APP_PLAYBACK_DB_CURRENT_SCHEMA="<Optional>"
+## Provide the user name of the database for Application Engine Playback database . For example: "dbuser1"
+dbserver1.APP_PLAYBACK_DB_USER_NAME="<youruser1>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the user of Application Engine Playback database .
+dbserver1.APP_PLAYBACK_DB_USER_PASSWORD="{Base64}<yourpassword>"
+
+####################################################
+## Business Automation Studio's Property for Studio database required on postgresql type database ##
+####################################################
+## Provide the database name for Business Automation Studio database. For example: "basdb" (Notes: the database name must be lowercase)
+dbserver1.STUDIO_DB_NAME="basdb"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.STUDIO_DB_CURRENT_SCHEMA="<Optional>"
+## Provide the user name of the database for the Business Automation Studio database. For example: "dbuser1"
+dbserver1.STUDIO_DB_USER_NAME="<youruser1>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the user of Business Automation Studio database.
+dbserver1.STUDIO_DB_USER_PASSWORD="{Base64}<yourpassword>"

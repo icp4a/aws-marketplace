@@ -1,0 +1,92 @@
+####################################################
+## USER Property for BAN ##
+####################################################
+## Provide the user name for the Navigator administrator. For example: "BANAdmin"
+BAN.APPLOGIN_USER="<Required>"
+
+## Provide the user password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the Navigator administrator.
+BAN.APPLOGIN_PASSWORD="{Base64}<Required>"
+
+## Provide a string for ltpaPassword in the ibm-ban-secret that will be used when creating the ltpakey.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text.(NOTES: BAN.LTPA_PASSWORD must same as CONTENT.LTPA_PASSWORD)
+BAN.LTPA_PASSWORD="{Base64}<Required>"
+
+## Provide a string for keystorePassword in the ibm-ban-secret that will be used when creating the keystore.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: BAN.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
+BAN.KEYSTORE_PASSWORD="{Base64}<Required>"
+
+## Provide the user name for jMail used by BAN. For example: "jMailAdmin"
+BAN.JMAIL_USER_NAME="<Optional>"
+
+## Provide the user password for jMail used by BAN.
+BAN.JMAIL_USER_PASSWORD="<Optional>"
+
+####################################################
+## USER Property for AE ##
+####################################################
+## Designate an existing LDAP user for the Application Engine admin user.
+## This user ID should be in the IBM Business Automation Navigator administrator role, as specified as appLoginUsername in the Navigator secret.
+## Required only when User Management Service (UMS) is configured: This user should also belong to UMS Teams admin group or the UMS Teams Administrators team.
+## If not, follow the instructions in "Completing post-deployment tasks for Business Automation Studio and Application Engine" in the IBM Documentation to add it to the Navigator Administrator role and UMS team server admin group.
+APP_ENGINE.ADMIN_USER="<Required>"
+
+## If you want better HA experience. Set the session.use_external_store to true, fill in your redis server information
+## The default value is "false"
+APP_ENGINE.SESSION_REDIS_USE_EXTERNAL_STORE="false"
+
+## Your external redis host/ip
+APP_ENGINE.SESSION_REDIS_HOST="<Optional>"
+
+## Your external redis port
+APP_ENGINE.SESSION_REDIS_PORT="<Optional>"
+
+## If your redis enabled TLS connection set this to true, You should add redis server CA certificate in tls_trust_list or trusted_certificate_list
+## The default value is "false"
+APP_ENGINE.SESSION_REDIS_TLS_ENABLED="false"
+
+## If enabled Redis SSL, you need to upload the SSL certificate file (rename to redis.pem) into a S3 bucket folder, and provide the S3 bucket URL of the folder.
+APP_ENGINE.SESSION_REDIS_SSL_CERT_FILE_FOLDER="s3://yours3bucket/folder-name/"
+
+## The name of the secret that contains the Redis SSL certificate.
+APP_ENGINE.SESSION_REDIS_SSL_SECRET_NAME="ibm-dba-ae-redis-cacert"
+
+## If you are using Redis V6 and above with username fill in this field. Otherwise leave this field as empty
+## The default value is empty ""
+APP_ENGINE.SESSION_REDIS_USERNAME=""
+
+####################################################
+## USER Property for App Engine Playback Server ##
+####################################################
+## Designate an existing LDAP user for the Playback Application Engine admin user.
+## This user ID should be in the IBM Business Automation Navigator administrator role, as specified as appLoginUsername in the Navigator secret.
+APP_PLAYBACK.ADMIN_USER="<Required>"
+
+## If you want better HA experience. Set the session.use_external_store to true, fill in your redis server information
+## The default value is "false"
+APP_PLAYBACK.SESSION_REDIS_USE_EXTERNAL_STORE="false"
+
+## Your external redis host/ip
+APP_PLAYBACK.SESSION_REDIS_HOST="<Optional>"
+
+## Your external redis port
+APP_PLAYBACK.SESSION_REDIS_PORT="<Optional>"
+
+## If your redis enabled TLS connection set this to true, You should add redis server CA certificate in tls_trust_list or trusted_certificate_list
+## The default value is "false"
+APP_PLAYBACK.SESSION_REDIS_TLS_ENABLED="false"
+
+## If enabled Redis SSL, you need to upload the SSL certificate file (rename redis.pem) into a S3 bucket folder, and provide the S3 bucket URL of the folder.
+APP_PLAYBACK.SESSION_REDIS_SSL_CERT_FILE_FOLDER="s3://yours3bucket/folder-name/"
+
+## The name of the secret that contains the Redis SSL certificate.
+APP_PLAYBACK.SESSION_REDIS_SSL_SECRET_NAME="ibm-dba-playback-redis-cacert"
+
+## If you are using Redis V6 and above with username fill in this field. Otherwise leave this field as empty
+## The default value is empty ""
+APP_PLAYBACK.SESSION_REDIS_USERNAME=""
+
+####################################################
+## USER Property for BAS ##
+####################################################
+## Designate an existing LDAP user for the BAStudio admin user.
+BASTUDIO.ADMIN_USER="<Required>"

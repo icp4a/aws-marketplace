@@ -40,8 +40,8 @@ APP_ENGINE.SESSION_REDIS_PORT="<Optional>"
 ## The default value is "false"
 APP_ENGINE.SESSION_REDIS_TLS_ENABLED="false"
 
-## If enabled Redis SSL, you need to upload the SSL certificate file into your Amazon S3 bucket and copy the S3 URI below.
-APP_ENGINE.SESSION_REDIS_SSL_CERT_FILE_FOLDER="s3://yours3bucket/redis.pem"
+## If enabled Redis SSL, you need to upload the SSL certificate file (rename redis.pem) into a S3 bucket folder, and provide the S3 bucket URL of the folder.
+APP_ENGINE.SESSION_REDIS_SSL_CERT_FILE_FOLDER="s3://yours3bucket/folder-name/"
 
 ## The name of the secret that contains the Redis SSL certificate.
 APP_ENGINE.SESSION_REDIS_SSL_SECRET_NAME="ibm-dba-ae-redis-cacert"

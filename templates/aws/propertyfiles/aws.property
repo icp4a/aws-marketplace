@@ -1,0 +1,39 @@
+####################################################
+## USER Property for FNCM ##
+####################################################
+## Provide the user name for P8Domain. For example: "CEAdmin"
+CONTENT.APPLOGIN_USER="<Required>"
+
+## Provide the user password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for P8Domain.
+CONTENT.APPLOGIN_PASSWORD="{Base64}<Required>"
+
+## Provide a string for ltpaPassword in the ibm-fncm-secret that will be used when creating the ltpakey.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: CONTENT.LTPA_PASSWORD must same as BAN.LTPA_PASSWORD)
+CONTENT.LTPA_PASSWORD="{Base64}<Required>"
+
+## Provide a string for keystorePassword in the ibm-fncm-secret that will be used when creating the keystore.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: CONTENT.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
+CONTENT.KEYSTORE_PASSWORD="{Base64}<Required>"
+
+####################################################
+## USER Property for Content initialization ##
+####################################################
+## Enable/disable ECM (FNCM) / BAN initialization (e.g., creation of P8 domain, creation/configuration of object stores,
+## creation/configuration of CSS servers, and initialization of Navigator (ICN).
+## The default valuse is "Yes", set "No" to disable.
+CONTENT_INITIALIZATION.ENABLE="Yes"
+
+## user name for GCD administrator, for example, "CEAdmin". This parameter accepts comma-separated lists (without spacing), for example, "CEAdmin1,CEAdmin2"
+CONTENT_INITIALIZATION.LDAP_ADMIN_USER_NAME="<Required>"
+
+## Names of groups containing GCD administrators, for example, "P8Administrators". This parameter accepts comma-separated lists (without spacing), for example, "P8Group1,P8Group2"
+CONTENT_INITIALIZATION.LDAP_ADMINS_GROUPS_NAME="<Required>"
+
+## user name and group name for object store admin, for example, "CEAdmin" or "P8Administrators". This parameter accepts comma-separated lists (without spacing), for example, "P8Group1,P8Group2"
+CONTENT_INITIALIZATION.CPE_OBJ_STORE_ADMIN_USER_GROUPS="<Required>"
+
+####################################################
+## USER Property for Automation Workstream Services ##
+####################################################
+## Designate an existing LDAP user for the Workstreams Server admin user.
+AWS.ADMIN_USER="<Required>"

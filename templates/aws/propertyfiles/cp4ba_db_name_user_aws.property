@@ -1,0 +1,36 @@
+####################################################
+## FNCM's Property for GCD Database Name and User on postgresql type database ##
+####################################################
+## Provide the name of the database for the GCD of P8Domain. For example: "gcddb" (Notes: the database name must be lowercase)
+dbserver1.GCD_DB_NAME="gcddb"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.GCD_DB_CURRENT_SCHEMA="<Optional>"
+## Provide the user name of the database for the GCD of P8Domain. For example: "dbuser1"
+dbserver1.GCD_DB_USER_NAME="<youruser1>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) of the database user for the GCD of P8Domain.
+dbserver1.GCD_DB_USER_PASSWORD="{Base64}<yourpassword>"
+
+###################################################
+## FNCM's Property for Object store Database Name and User on postgresql type database ##
+###################################################
+## Provide the name of the database for the object store required by AWS. For example: "awsdocs" (Notes: the database name must be lowercase)
+dbserver1.AWSDOCS_DB_NAME="awsdocs"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.AWSDOCS_DB_CURRENT_SCHEMA="<Optional>"
+## Provide the user name for the object store database required by AWS. For example: "dbuser1"
+dbserver1.AWSDOCS_DB_USER_NAME="<youruser1>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the user of Object Store of P8Domain.
+dbserver1.AWSDOCS_DB_USER_PASSWORD="{Base64}<yourpassword>"
+
+
+####################################################
+## Automation Workstream Services's Property for database on postgresql ##
+####################################################
+## Provide the database name for database required by Automation Workstream Services. For example: "awsdb" (Notes: the database name must be lowercase)
+dbserver1.AWS_DB_NAME="awsdb"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.AWS_DB_CURRENT_SCHEMA="<Optional>"
+## Provide the user name of the database for Automation Workstream Services. For example: "dbuser1"
+dbserver1.AWS_DB_USER_NAME="<youruser1>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the user of database required by Automation Workstream Services.
+dbserver1.AWS_DB_USER_PASSWORD="{Base64}<yourpassword>"

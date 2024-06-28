@@ -1,0 +1,32 @@
+-- Please ensure you already have existing oracle instance or pluggable database (PDB). If not, please create one firstly
+
+-- create a new user
+CREATE USER AAEDB IDENTIFIED BY "<password>";
+
+-- grant privileges to system and objects
+GRANT CREATE SESSION TO AAEDB;
+GRANT ALTER SESSION TO AAEDB;
+GRANT CREATE TABLE TO AAEDB;
+-- Note:
+-- 1. /home/oracle/orcl is a folder in the PV.
+-- 2. You must specify the DATAFILE or TEMPFILE clause unless you have enabled Oracle Managed Files by setting a value for the DB_CREATE_FILE_DEST initialization parameter. 
+CREATE TABLESPACE AAEDBTS
+   DATAFILE '/home/oracle/orcl/AAEDBTS.dbf' SIZE 200M REUSE
+   AUTOEXTEND ON NEXT 20M
+   EXTENT MANAGEMENT LOCAL
+   SEGMENT SPACE MANAGEMENT AUTO
+   ONLINE
+   PERMANENT
+ ;
+CREATE TEMPORARY TABLESPACE AAEDBTS_TEMP
+   TEMPFILE '/home/oracle/orcl/AAEDBTS_TEMP.dbf' SIZE 200M REUSE
+   AUTOEXTEND ON NEXT 20M
+   EXTENT MANAGEMENT LOCAL
+;
+ALTER USER AAEDB QUOTA UNLIMITED ON AAEDBTS;
+ALTER USER AAEDB DEFAULT TABLESPACE AAEDBTS TEMPORARY TABLESPACE AAEDBTS_TEMP;
+GRANT SELECT ANY TABLE TO AAEDB;
+GRANT UPDATE ANY TABLE TO AAEDB;
+GRANT INSERT ANY TABLE TO AAEDB;
+GRANT DROP ANY TABLE TO AAEDB;
+EXIT;
