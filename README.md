@@ -37,7 +37,7 @@ This repos consists of AWS Marketplace artifacts for IBM Cloud Pak for Busines A
 
 ### IBM Automation Document Processing
 - `templates/adp/propertyfiles`
-- `templates/adp/dbscripts
+- `templates/adp/dbscripts`
 
 ### IBM Workflow Process Service Authoring
 - `templates/wfpsa/propertyfiles`
