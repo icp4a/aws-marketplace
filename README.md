@@ -1,13 +1,6 @@
 # AWS Marketplace Templates for IBM Cloud Pak for Business Automation
 
-This repos consists of AWS Marketplace artifacts for IBM Cloud Pak for Automation. The Cloud Formation Templates and property files.
-
-## CP4BA Templates
-- templates/`ibm-cloudpak-business-automation-new-vpc-template.yml` 
-- templates/`ibm-cloudpak-business-automation-template.yml`
-
-## VPC Templates
-- `templates/aws-vpc.template.yml` [ 3 AZ ]
+This repos consists of AWS Marketplace artifacts for IBM Cloud Pak for Busines Automation.
 
 ## Property files and Scripts
 
@@ -29,3 +22,23 @@ This repos consists of AWS Marketplace artifacts for IBM Cloud Pak for Automatio
 ### IBM Operational Decision Manager
 - `templates/odm/propertyfiles`
 - `templates/odm/dbscripts`
+
+### IBM Automation Decision Services
+- `templates/ads/propertyfiles`
+- `templates/ads/dbscripts`
+
+### IBM Business Automation Application
+- `templates/baa/propertyfiles`
+- `templates/baa/dbscripts`
+
+### IBM Automation Workstream Services
+- `templates/aws/propertyfiles`
+- `templates/aws/dbscripts`
+
+### IBM Automation Document Processing
+- `templates/adp/propertyfiles`
+- `templates/adp/dbscripts`
+
+### IBM Workflow Process Service Authoring
+- `templates/wfpsa/propertyfiles`
+- `templates/wfpsa/dbscripts`
