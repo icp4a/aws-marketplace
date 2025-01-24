@@ -19,6 +19,10 @@ dbserver1.DATABASE_SSL_ENABLE="True"
 ## In this release, only server authentication is supported.  Please do not change this default value, which is "False"
 dbserver1.POSTGRESQL_SSL_CLIENT_SERVER="False"
 
+## The value for the sslmode which determines whether or with what priority a secure SSL TCP/IP connection will be negotiated with the PostgreSQL database server.
+## There are three modes [require|verify-ca|verify-full].
+dbserver1.POSTGRESQL_SSL_MODE="require"
+
 ## The name of the secret that contains the DB2/Oracle/MSSQLServer/PostgreSQL SSL certificate.
 dbserver1.DATABASE_SSL_SECRET_NAME="ibm-cp4ba-db-ssl-secret-for-alias"
 

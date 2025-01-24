@@ -17,6 +17,12 @@ dbserver1.GCD_DB_USER_PASSWORD="{Base64}<yourpassword>"
 dbserver1.OS1_DB_NAME="os1db"
 ## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
 dbserver1.OS1_DB_CURRENT_SCHEMA="<Optional>"
+## Provide database index storage location. This parameter is optional. If not set, the database index storage location will not be set when creating the object store.
+dbserver1.OS1_DB_INDEX_STORAGE_LOCATION="<Optional>"
+## Provide database table storage location. This parameter is optional. If not set, the database table storage location will not be set when creating the object store.
+dbserver1.OS1_DB_TABLE_STORAGE_LOCATION="<Optional>"
+## Provide database LOB storage location. This parameter is optional. If not set, the database LOB storage location will not be set when creating the object store.
+dbserver1.OS1_DB_LOB_STORAGE_LOCATION="<Optional>"
 ## Provide the user name of the database for the Object Store of P8Domain. For example: "dbuser1"
 dbserver1.OS1_DB_USER_NAME="<youruser1>"
 ## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) of the database user for the Object Store of P8Domain. 
@@ -28,6 +34,12 @@ dbserver1.OS1_ENABLE_DOCUMENT_PROCESSING="False"
 dbserver1.DEVOS_DB_NAME="devos1"
 ## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
 dbserver1.DEVOS_DB_CURRENT_SCHEMA="<Optional>"
+## Provide database index storage location. This parameter is optional. If not set, the database index storage location will not be set when creating the object store.
+dbserver1.DEVOS_DB_INDEX_STORAGE_LOCATION="<Optional>"
+## Provide database table storage location. This parameter is optional. If not set, the database table storage location will not be set when creating the object store.
+dbserver1.DEVOS_DB_TABLE_STORAGE_LOCATION="<Optional>"
+## Provide database LOB storage location. This parameter is optional. If not set, the database LOB storage location will not be set when creating the object store.
+dbserver1.DEVOS_DB_LOB_STORAGE_LOCATION="<Optional>"
 ## Provide the user name for the object store database required by ADP. For example: "dbuser1"
 dbserver1.DEVOS_DB_USER_NAME="<youruser1>"
 ## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the user of Object Store of P8Domain.
@@ -37,6 +49,12 @@ dbserver1.DEVOS_DB_USER_PASSWORD="{Base64}<yourpassword>"
 dbserver1.AEOS_DB_NAME="aeos"
 ## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
 dbserver1.AEOS_DB_CURRENT_SCHEMA="<Optional>"
+## Provide database index storage location. This parameter is optional. If not set, the database index storage location will not be set when creating the object store.
+dbserver1.AEOS_DB_INDEX_STORAGE_LOCATION="<Optional>"
+## Provide database table storage location. This parameter is optional. If not set, the database table storage location will not be set when creating the object store.
+dbserver1.AEOS_DB_TABLE_STORAGE_LOCATION="<Optional>"
+## Provide database LOB storage location. This parameter is optional. If not set, the database LOB storage location will not be set when creating the object store.
+dbserver1.AEOS_DB_LOB_STORAGE_LOCATION="<Optional>"
 ## Provide the user name of the database for the object store required by AE Data Persistent. For example: "dbuser1"
 dbserver1.AEOS_DB_USER_NAME="<youruser1>"
 ## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the user of Object Store of P8Domain. 
@@ -59,8 +77,6 @@ dbserver1.ICN_DB_USER_PASSWORD="{Base64}<yourpassword>"
 ####################################################
 ## Provide the database name for Document Processing Engine Base database. (For DB2, name must be 8 chars or less, no special chars.) For example: "adpbase"
 dbserver1.ADP_BASE_DB_NAME="adpbase"
-## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
-dbserver1.ADP_BASE_DB_CURRENT_SCHEMA="<Optional>"
 ## Provide the user name for the Document Processing Engine Base database. Must be an existing user. For example: "dbuser1"
 dbserver1.ADP_BASE_DB_USER_NAME="<youruser1>"
 ## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the Document Processing Engine Base database. 
