@@ -4,26 +4,31 @@
 ## Provide the user name for P8Domain. For example: "CEAdmin"
 CONTENT.APPLOGIN_USER="<Required>"
 
-## Provide the user password for P8Domain.
-CONTENT.APPLOGIN_PASSWORD="<Required>"
+## Provide the user password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for P8Domain.
+CONTENT.APPLOGIN_PASSWORD="{Base64}<Required>"
 
-## Provide LTPA key password for FNCM deployment.
-CONTENT.LTPA_PASSWORD="<Required>"
+## Provide a string for ltpaPassword in the ibm-fncm-secret that will be used when creating the ltpakey.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: CONTENT.LTPA_PASSWORD must same as BAN.LTPA_PASSWORD)
+CONTENT.LTPA_PASSWORD="{Base64}<Required>"
 
-## Provide keystore password for FNCM deployment.
-CONTENT.KEYSTORE_PASSWORD="<Required>"
+## Provide a string for keystorePassword in the ibm-fncm-secret that will be used when creating the keystore.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: CONTENT.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
+CONTENT.KEYSTORE_PASSWORD="{Base64}<Required>"
 
-## Provide key password for ICC SAP deployment.
-ICCSAP.KEYSTORE_PASSWORD="<Required>"
+## Provide a string for keystorePassword in the ibm-iccsap-secret that will be used when creating the keystore.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: ICCSAP.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
+ICCSAP.KEYSTORE_PASSWORD="{Base64}<Required>"
 
-## Provide ARCHIVE_USERID for ICC SAP deployment.
-ICCSAP.ARCHIVE_USER_ID="<Required>"
+## Provide ARCHIVE_USERID used in the ibm-icc-secret secret for the security details of the login credentials for the Content Platform Engine services. This login user ID must have domain-wide read access to all documents to be indexed.
+## This login user ID must have domain-wide read access to all documents to be indexed.
+CONTENT.ARCHIVE_USER_ID="<Required>"
 
-## Provide ARCHIVE_PASSWORD for ICC SAP deployment.
-ICCSAP.ARCHIVE_USER_PASSWORD="<Required>"
+## Provide ARCHIVE_PASSWORD used in the ibm-icc-secret secret (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text).
+CONTENT.ARCHIVE_USER_PASSWORD="{Base64}<Required>"
 
-## Provide keystore password for IER deployment.
-IER.KEYSTORE_PASSWORD="<Required>"
+## Provide a string for keystorePassword in the ibm-ier-secret that will be used when creating the keystore.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: IER.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
+IER.KEYSTORE_PASSWORD="{Base64}<Required>"
 
 ####################################################
 ## USER Property for Content initialization ##
@@ -33,32 +38,125 @@ IER.KEYSTORE_PASSWORD="<Required>"
 ## The default valuse is "Yes", set "No" to disable.
 CONTENT_INITIALIZATION.ENABLE="Yes"
 
-## user name for P8 domain admin, for example, "CEAdmin". This parameter accepts comma-separated lists, for example, "CEAdmin1, CEAdmin2"
+## user name for GCD administrator, for example, "CEAdmin". This parameter accepts comma-separated lists (without spacing), for example, "CEAdmin1,CEAdmin2"
 CONTENT_INITIALIZATION.LDAP_ADMIN_USER_NAME="<Required>"
 
-## group name for P8 domain admin, for example, "P8Administrators". This parameter accepts comma-separated lists, for example, "P8Group1, P8Group2"
+## Names of groups containing GCD administrators, for example, "P8Administrators". This parameter accepts comma-separated lists (without spacing), for example, "P8Group1,P8Group2"
 CONTENT_INITIALIZATION.LDAP_ADMINS_GROUPS_NAME="<Required>"
 
-## user name and group name for object store admin, for example, "CEAdmin" or "P8Administrators". This parameter accepts comma-separated lists, for example, "P8Group1, P8Group2"
+## user name and group name for object store admin, for example, "CEAdmin" or "P8Administrators". This parameter accepts comma-separated lists (without spacing), for example, "P8Group1,P8Group2"
 CONTENT_INITIALIZATION.CPE_OBJ_STORE_ADMIN_USER_GROUPS="<Required>"
 
 ####################################################
 ## USER Property for BAN ##
 ####################################################
-## Provide the user name for BAN. For example: "BANAdmin"
+## Provide the user name for the Navigator administrator. For example: "BANAdmin"
 BAN.APPLOGIN_USER="<Required>"
 
-## Provide the user password for BAN.
-BAN.APPLOGIN_PASSWORD="<Required>"
+## Provide the user password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the Navigator administrator.
+BAN.APPLOGIN_PASSWORD="{Base64}<Required>"
 
-## Provide LTPA key password for BAN deployment.
-BAN.LTPA_PASSWORD="<Required>"
+## Provide a string for ltpaPassword in the ibm-ban-secret that will be used when creating the ltpakey.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text.(NOTES: BAN.LTPA_PASSWORD must same as CONTENT.LTPA_PASSWORD)
+BAN.LTPA_PASSWORD="{Base64}<Required>"
 
-## Provide keystore password for BAN deployment.
-BAN.KEYSTORE_PASSWORD="<Required>"
+## Provide a string for keystorePassword in the ibm-ban-secret that will be used when creating the keystore.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: BAN.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
+BAN.KEYSTORE_PASSWORD="{Base64}<Required>"
 
 ## Provide the user name for jMail used by BAN. For example: "jMailAdmin"
 BAN.JMAIL_USER_NAME="<Optional>"
 
 ## Provide the user password for jMail used by BAN.
 BAN.JMAIL_USER_PASSWORD="<Optional>"
+
+###########################################################################################
+## USER Property for the customized IAM SCIM LDAP attributes for the LDAP (Microsoft Active Directory) configuration ##
+###########################################################################################
+
+## [NOTES:]
+## For information about SCIM parameters used by the CP4BA deployment, you can refer below link: 
+## https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/24.0.0?topic=parameters-ldap-configuration#ldap_kubernetes__scim.
+## For information about LDAP attributes, you can use the ldapsearch tool or other LDAP browser utilitise.
+## How to use ldapsearch tool to get LDAP attributes, you can refer below link: 
+## https://www.ibm.com/docs/en/cloud-paks/foundational-services/4.4?topic=users-updating-scim-ldap-attributes-mapping#about_ldap_attributes.
+
+## Provide the user unique id attribute, the default value "sAMAccountName" for "Microsoft Active Directory".
+## This attribute MUST be set to an LDAP attribute that is unique and immutable.
+SCIM.USER_UNIQUE_ID_ATTRIBUTE="sAMAccountName"
+
+## Provide the user name attribute, the default value "sAMAccountName" for "Microsoft Active Directory".
+SCIM.USER_NAME_ATTRIBUTE="sAMAccountName"
+
+## Provide the user principal name attribute, the default value "sAMAccountName" for "Microsoft Active Directory".
+SCIM.USER_PRINCIPAL_NAME_ATTRIBUTE="sAMAccountName"
+
+## Provide the user display name attribute, the default value "displayName" for "Microsoft Active Directory".
+SCIM.USER_DISPLAY_NAME_ATTRIBUTE="displayName"
+
+## Provide the user given name attribute, the default value "givenName" for "Microsoft Active Directory".
+SCIM.USER_GIVEN_NAME_ATTRIBUTE="givenName"
+
+## Provide the user family name attribute, the default value "sn" for "Microsoft Active Directory".
+SCIM.USER_FAMILY_NAME_ATTRIBUTE="sn"
+
+## Provide the user full name attribute, the default value "cn" for "Microsoft Active Directory".
+SCIM.USER_FULL_NAME_ATTRIBUTE="cn"
+
+## Provide the user external id attribute, the default value "dn" for "Microsoft Active Directory".
+SCIM.USER_EXTERNAL_ID_ATTRIBUTE="dn"
+
+## Provide the user emails attribute, the default value "mail" for "Microsoft Active Directory".
+SCIM.USER_EMAILS_ATTRIBUTE="mail"
+
+## Provide the user created attribute, the default value "whenCreated" for "Microsoft Active Directory".
+SCIM.USER_CREATED_ATTRIBUTE="whenCreated"
+
+## Provide the user lastModified attribute, the default value "whenChanged" for "Microsoft Active Directory".
+SCIM.USER_LASTMODIFIED_ATTRIBUTE="whenChanged"
+
+## Provide the user phoneNumbers value (first), the default value "mobile" for "Microsoft Active Directory".
+SCIM.USER_PHONENUMBERS_VALUE1="mobile"
+
+## Provide the user phoneNumbers type (first), the default value "mobile" for "Microsoft Active Directory".
+SCIM.USER_PHONENUMBERS_TYPE1="mobile"
+
+## Provide the user phoneNumbers value (second), the default value "telephoneNumber" for "Microsoft Active Directory".
+SCIM.USER_PHONENUMBERS_VALUE2="telephoneNumber"
+
+## Provide the user phoneNumbers type (second), the default value "work" for "Microsoft Active Directory".
+SCIM.USER_PHONENUMBERS_TYPE2="work"
+
+## Provide the user object class attribute, the default value "person" for "Microsoft Active Directory".
+SCIM.USER_OBJECT_CLASS_ATTRIBUTE="person"
+
+## Provide the user groups attribute, the default value "memberOf" for "Microsoft Active Directory".
+SCIM.USER_GROUPS_ATTRIBUTE="memberOf"
+
+## Provide the group unique id attribute, the default value "sAMAccountName" for "Microsoft Active Directory".
+## This attribute MUST be set to an LDAP attribute that is unique and immutable.
+SCIM.GROUP_UNIQUE_ID_ATTRIBUTE="sAMAccountName"
+
+## Provide the group name attribute, the default value "cn" for "Microsoft Active Directory".
+SCIM.GROUP_NAME_ATTRIBUTE="cn"
+
+## Provide the group principal name attribute, the default value "cn" for "Microsoft Active Directory".
+SCIM.GROUP_PRINCIPAL_NAME_ATTRIBUTE="cn"
+
+## Provide the group display name attribute, the default value "cn" for "Microsoft Active Directory".
+SCIM.GROUP_DISPLAY_NAME_ATTRIBUTE="cn"
+
+## Provide the group external id attribute, the default value "dn" for "Microsoft Active Directory".
+SCIM.GROUP_EXTERNAL_ID_ATTRIBUTE="dn"
+
+## Provide the group created attribute, the default value "whenCreated" for "Microsoft Active Directory".
+SCIM.GROUP_CREATED_ATTRIBUTE="whenCreated"
+
+## Provide the group lastModified attribute, the default value "whenChanged" for "Microsoft Active Directory".
+SCIM.GROUP_LASTMODIFIED_ATTRIBUTE="whenChanged"
+
+## Provide the group object class attribute, the default value "group" for "Microsoft Active Directory".
+SCIM.GROUP_OBJECT_CLASS_ATTRIBUTE="group"
+
+## Provide the group members attribute, the default value "member" for "Microsoft Active Directory".
+SCIM.GROUP_MEMBERS_ATTRIBUTE="member"

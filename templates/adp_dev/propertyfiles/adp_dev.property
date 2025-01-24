@@ -89,8 +89,8 @@ ADP.ENV_OWNER_USER_NAME="<Required>"
 ## Provide the the environment owner password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for ADP.
 ADP.ENV_OWNER_USER_PASSWORD="{Base64}<Required>"
 
-## If you want to use your own Enterprise MongoDB instance in the environment. The default vaule is "No".
-ADP.USE_EXTERNAL_MONGODB="No"
+## IMPORTANT: It is recommended to use an external Enterprise MongoDB instance in a production environment. The embedded MongoDB is provided for demo purposes only when set this value as "No". The default value is "Yes".
+ADP.USE_EXTERNAL_MONGODB="Yes"
 
 ## Provide the mongoURI, for example: "mongodb://mongo:<mongoPwd>@<mongo_database_hostname>:<mongo_database_port>/<mongo_database_name>?authSource=admin&connectTimeoutMS=3000"
 ADP.EXTERNAL_MONGO_URI="<Optional>"
@@ -186,14 +186,14 @@ BASTUDIO.ADMIN_USER="<Required>"
 
 ## [NOTES:]
 ## For information about SCIM parameters used by the CP4BA deployment, you can refer below link: 
-## https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/23.0.2?topic=parameters-ldap-configuration#ldap_kubernetes__scim.
+## https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/24.0.0?topic=parameters-ldap-configuration#ldap_kubernetes__scim.
 ## For information about LDAP attributes, you can use the ldapsearch tool or other LDAP browser utilitise.
 ## How to use ldapsearch tool to get LDAP attributes, you can refer below link: 
-## https://www.ibm.com/docs/en/cloud-paks/foundational-services/4.2?topic=users-updating-scim-ldap-attributes-mapping#about_ldap_attributes.
+## https://www.ibm.com/docs/en/cloud-paks/foundational-services/4.4?topic=users-updating-scim-ldap-attributes-mapping#about_ldap_attributes.
 
-## Provide the user unique id attribute, the default value "dn" for "Microsoft Active Directory".
+## Provide the user unique id attribute, the default value "sAMAccountName" for "Microsoft Active Directory".
 ## This attribute MUST be set to an LDAP attribute that is unique and immutable.
-SCIM.USER_UNIQUE_ID_ATTRIBUTE="dn"
+SCIM.USER_UNIQUE_ID_ATTRIBUTE="sAMAccountName"
 
 ## Provide the user name attribute, the default value "sAMAccountName" for "Microsoft Active Directory".
 SCIM.USER_NAME_ATTRIBUTE="sAMAccountName"
@@ -243,9 +243,9 @@ SCIM.USER_OBJECT_CLASS_ATTRIBUTE="person"
 ## Provide the user groups attribute, the default value "memberOf" for "Microsoft Active Directory".
 SCIM.USER_GROUPS_ATTRIBUTE="memberOf"
 
-## Provide the group unique id attribute, the default value "dn" for "Microsoft Active Directory".
+## Provide the group unique id attribute, the default value "sAMAccountName" for "Microsoft Active Directory".
 ## This attribute MUST be set to an LDAP attribute that is unique and immutable.
-SCIM.GROUP_UNIQUE_ID_ATTRIBUTE="dn"
+SCIM.GROUP_UNIQUE_ID_ATTRIBUTE="sAMAccountName"
 
 ## Provide the group name attribute, the default value "cn" for "Microsoft Active Directory".
 SCIM.GROUP_NAME_ATTRIBUTE="cn"
@@ -270,4 +270,3 @@ SCIM.GROUP_OBJECT_CLASS_ATTRIBUTE="group"
 
 ## Provide the group members attribute, the default value "member" for "Microsoft Active Directory".
 SCIM.GROUP_MEMBERS_ATTRIBUTE="member"
-

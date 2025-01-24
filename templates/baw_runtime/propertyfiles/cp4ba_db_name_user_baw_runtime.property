@@ -1,58 +1,99 @@
+####################################################
+## FNCM's Property for GCD Database Name and User on postgresql type database ##
+####################################################
+## Provide the name of the database for the GCD of P8Domain. For example: "gcddb" (Notes: the database name must be lowercase)
+dbserver1.GCD_DB_NAME="gcddb"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.GCD_DB_CURRENT_SCHEMA="<Optional>"
+## Provide the user name of the database for the GCD of P8Domain. For example: "dbuser1"
+dbserver1.GCD_DB_USER_NAME="<youruser1>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) of the database user for the GCD of P8Domain.
+dbserver1.GCD_DB_USER_PASSWORD="{Base64}<yourpassword>"
+
 ###################################################
 ## FNCM's Property for Object store Database Name and User on postgresql type database ##
 ###################################################
-
-## Provide the name of the database for the object store required by BAW authoring or BAW Runtime. For example: "bawdocs"
+## Provide the name of the database for the object store required by BAW authoring or BAW Runtime. For example: "bawdocs" (Notes: the database name must be lowercase)
 dbserver1.BAWDOCS_DB_NAME="bawdocs"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.BAWDOCS_DB_CURRENT_SCHEMA="<Optional>"
+## Provide database index storage location. This parameter is optional. If not set, the database index storage location will not be set when creating the object store.
+dbserver1.BAWDOCS_DB_INDEX_STORAGE_LOCATION="<Optional>"
+## Provide database table storage location. This parameter is optional. If not set, the database table storage location will not be set when creating the object store.
+dbserver1.BAWDOCS_DB_TABLE_STORAGE_LOCATION="<Optional>"
+## Provide database LOB storage location. This parameter is optional. If not set, the database LOB storage location will not be set when creating the object store.
+dbserver1.BAWDOCS_DB_LOB_STORAGE_LOCATION="<Optional>"
 ## Provide the user name for the object store database required by BAW authoring or BAW Runtime. For example: "dbuser1"
 dbserver1.BAWDOCS_DB_USER_NAME="<youruser1>"
 ## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the user of Object Store of P8Domain.
 dbserver1.BAWDOCS_DB_USER_PASSWORD="{Base64}<yourpassword>"
 
-## Provide the name of the database for the object store required by BAW authoring or BAW Runtime. For example: "bawdos"
+## Provide the name of the database for the object store required by BAW authoring or BAW Runtime. For example: "bawdos" (Notes: the database name must be lowercase)
 dbserver1.BAWDOS_DB_NAME="bawdos"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.BAWDOS_DB_CURRENT_SCHEMA="<Optional>"
+## Provide database index storage location. This parameter is optional. If not set, the database index storage location will not be set when creating the object store.
+dbserver1.BAWDOS_DB_INDEX_STORAGE_LOCATION="<Optional>"
+## Provide database table storage location. This parameter is optional. If not set, the database table storage location will not be set when creating the object store.
+dbserver1.BAWDOS_DB_TABLE_STORAGE_LOCATION="<Optional>"
+## Provide database LOB storage location. This parameter is optional. If not set, the database LOB storage location will not be set when creating the object store.
+dbserver1.BAWDOS_DB_LOB_STORAGE_LOCATION="<Optional>"
 ## Provide the user name for the object store database required by BAW authoring or BAW Runtime. For example: "dbuser1"
 dbserver1.BAWDOS_DB_USER_NAME="<youruser1>"
 ## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the user of Object Store of P8Domain.
 dbserver1.BAWDOS_DB_USER_PASSWORD="{Base64}<yourpassword>"
 
-## Provide the name of the database for the object store required by BAW authoring or BAW Runtime. For example: "bawtos"
+## Provide the name of the database for the object store required by BAW authoring or BAW Runtime. For example: "bawtos" (Notes: the database name must be lowercase)
 dbserver1.BAWTOS_DB_NAME="bawtos"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.BAWTOS_DB_CURRENT_SCHEMA="<Optional>"
+## Provide database index storage location. This parameter is optional. If not set, the database index storage location will not be set when creating the object store.
+dbserver1.BAWTOS_DB_INDEX_STORAGE_LOCATION="<Optional>"
+## Provide database table storage location. This parameter is optional. If not set, the database table storage location will not be set when creating the object store.
+dbserver1.BAWTOS_DB_TABLE_STORAGE_LOCATION="<Optional>"
+## Provide database LOB storage location. This parameter is optional. If not set, the database LOB storage location will not be set when creating the object store.
+dbserver1.BAWTOS_DB_LOB_STORAGE_LOCATION="<Optional>"
 ## Provide the user name for the object store database required by BAW authoring or BAW Runtime. For example: "dbuser1"
 dbserver1.BAWTOS_DB_USER_NAME="<youruser1>"
 ## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the user of Object Store of P8Domain.
 dbserver1.BAWTOS_DB_USER_PASSWORD="{Base64}<yourpassword>"
 
-## Provide the name of the database for Case History when Case History Emitter is enabled. For example: "chos"
-dbserver1.CHOS_DB_NAME="chos"
+## Provide the name of the database for Case History when Case History Emitter is enabled. For example: "chos" (Notes: the database name must be lowercase)
+# dbserver1.CHOS_DB_NAME="chos"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.CHOS_DB_CURRENT_SCHEMA="<Optional>"
 ## Provide the user name for the object store database required by Case History when Case History Emitter is enabled. For example: "dbuser1"
-dbserver1.CHOS_DB_USER_NAME="<youruser1>"
+# dbserver1.CHOS_DB_USER_NAME="<youruser1>"
 ## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the user of Object Store of P8Domain.
-dbserver1.CHOS_DB_USER_PASSWORD="{Base64}<yourpassword>"
+# dbserver1.CHOS_DB_USER_PASSWORD="{Base64}<yourpassword>"
 
-## Provide the name of the database for the object store required by AE Data Persistent. For example: "aeos"
-dbserver1.AEOS_DB_NAME="aeos"
-## Provide the user name of the database for the object store required by AE Data Persistent. For example: "dbuser1"
-dbserver1.AEOS_DB_USER_NAME="<youruser1>"
-## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the user of Object Store of P8Domain. 
-dbserver1.AEOS_DB_USER_PASSWORD="{Base64}<yourpassword>"
 
 ####################################################
-## Application Engine's Property for Application Engine database required on postgresql type database ##
+## BAN's Property for ICN Database Name and User on postgresql type database ##
 ####################################################
-## Provide the database name for runtime application engine. For example: "aaedb"
-dbserver1.APP_ENGINE_DB_NAME="aaedb"
-## Provide the user name of the database for the Application Engine database. For example: "dbuser1"
-dbserver1.APP_ENGINE_DB_USER_NAME="<youruser1>"
-## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the user of Application Engine database. 
-dbserver1.APP_ENGINE_DB_USER_PASSWORD="{Base64}<yourpassword>"
+## Provide the name of the database for ICN (Navigator). For example: "icndb" (Notes: the database name must be lowercase)
+dbserver1.ICN_DB_NAME="icndb"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.ICN_DB_CURRENT_SCHEMA="<Optional>"
+## Provide the user name of the database for ICN (Navigator). For example: "dbuser1"
+dbserver1.ICN_DB_USER_NAME="<youruser1>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) of the database user for ICN (Navigator). 
+dbserver1.ICN_DB_USER_PASSWORD="{Base64}<yourpassword>"
 
 ####################################################
 ## Business Automation Workflow Runtime's Property for database on postgresql ##
 ####################################################
+## Provide the database name for Business Automation Workflow Runtime. For example: "bawdb" (Notes: the database name must be lowercase)
+dbserver1.BAW_RUNTIME_DB_NAME="bawdb"
+## Provide database schema name. This parameter is optional. If not set, the schema name is the same as database user name.
+dbserver1.BAW_RUNTIME_DB_CURRENT_SCHEMA="<Optional>"
+## Provide database index storage location. This parameter is optional. If not set, the database index storage location will not be set when creating the object store.
+dbserver1.BAW_RUNTIME_DB_INDEX_STORAGE_LOCATION="<Optional>"
+## Provide database table storage location. This parameter is optional. If not set, the database table storage location will not be set when creating the object store.
+dbserver1.BAW_RUNTIME_DB_TABLE_STORAGE_LOCATION="<Optional>"
+## Provide database LOB storage location. This parameter is optional. If not set, the database LOB storage location will not be set when creating the object store.
+dbserver1.BAW_RUNTIME_DB_LOB_STORAGE_LOCATION="<Optional>"
 ## Provide the user name of the database for Business Automation Workflow Runtime. For example: "dbuser1"
 dbserver1.BAW_RUNTIME_DB_USER_NAME="<youruser1>"
 ## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the user of database for Business Automation Workflow Runtime .
 dbserver1.BAW_RUNTIME_DB_USER_PASSWORD="{Base64}<yourpassword>"
-## Provide the database name for Business Automation Workflow Runtime. For example: "bawdb"
-dbserver1.BAW_RUNTIME_DB_NAME="bawdb"

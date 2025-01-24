@@ -1,8 +1,38 @@
 ####################################################
-## USER Property for Workflow under Content initialization ##
+## USER Property for FNCM ##
 ####################################################
-## Make sure CONTENT_INITIALIZATION in content.property file is enabled before filling out this section. If CONTENT_INITIALIZATION is disabled, this section can be ignored.
-## Specify whether to enable workflow for the object store, the default vaule is "Yes"
+## Provide the user name for P8Domain. For example: "CEAdmin"
+CONTENT.APPLOGIN_USER="<Required>"
+
+## Provide the user password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for P8Domain.
+CONTENT.APPLOGIN_PASSWORD="{Base64}<Required>"
+
+## Provide a string for ltpaPassword in the ibm-fncm-secret that will be used when creating the ltpakey.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: CONTENT.LTPA_PASSWORD must same as BAN.LTPA_PASSWORD)
+CONTENT.LTPA_PASSWORD="{Base64}<Required>"
+
+## Provide a string for keystorePassword in the ibm-fncm-secret that will be used when creating the keystore.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: CONTENT.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
+CONTENT.KEYSTORE_PASSWORD="{Base64}<Required>"
+
+####################################################
+## USER Property for Content initialization ##
+####################################################
+## Enable/disable ECM (FNCM) / BAN initialization (e.g., creation of P8 domain, creation/configuration of object stores,
+## creation/configuration of CSS servers, and initialization of Navigator (ICN).
+## The default valuse is "Yes", set "No" to disable.
+CONTENT_INITIALIZATION.ENABLE="Yes"
+
+## user name for GCD administrator, for example, "CEAdmin". This parameter accepts comma-separated lists (without spacing), for example, "CEAdmin1,CEAdmin2"
+CONTENT_INITIALIZATION.LDAP_ADMIN_USER_NAME="<Required>"
+
+## Names of groups containing GCD administrators, for example, "P8Administrators". This parameter accepts comma-separated lists (without spacing), for example, "P8Group1,P8Group2"
+CONTENT_INITIALIZATION.LDAP_ADMINS_GROUPS_NAME="<Required>"
+
+## user name and group name for object store admin, for example, "CEAdmin" or "P8Administrators". This parameter accepts comma-separated lists (without spacing), for example, "P8Group1,P8Group2"
+CONTENT_INITIALIZATION.CPE_OBJ_STORE_ADMIN_USER_GROUPS="<Required>"
+
+## Specify whether to enable workflow for the object store, The default value is "Yes"
 CONTENT_INITIALIZATION.CPE_OBJ_STORE_ENABLE_WORKFLOW="Yes"
 
 ## Specify a table space for the workflow data.
@@ -18,40 +48,121 @@ CONTENT_INITIALIZATION.CPE_OBJ_STORE_WORKFLOW_CONFIG_GROUP="<Required>"
 CONTENT_INITIALIZATION.CPE_OBJ_STORE_WORKFLOW_PE_CONN_POINT_NAME="<Required>"
 
 ####################################################
-## USER Property for AE ##
+## USER Property for BAN ##
 ####################################################
-## Designate an existing LDAP user for the Application Engine admin user.
-## This user ID should be in the IBM Business Automation Navigator administrator role, as specified as appLoginUsername in the Navigator secret. 
-## This user should also belong to the User Management Service (UMS) Teams admin group or the UMS Teams Administrators team.
-## If not, follow the instructions in "Completing post-deployment tasks for Business Automation Studio and Application Engine" in the IBM Documentation to add it to the Navigator Administrator role and UMS team server admin group.
-APP_ENGINE.ADMIN_USER="<Required>"
+## Provide the user name for the Navigator administrator. For example: "BANAdmin"
+BAN.APPLOGIN_USER="<Required>"
 
-## If you want better HA experience. Set the session.use_external_store to true, fill in your redis server information
-## The default value is "false"
-APP_ENGINE.SESSION_REDIS_USE_EXTERNAL_STORE="false"
+## Provide the user password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the Navigator administrator.
+BAN.APPLOGIN_PASSWORD="{Base64}<Required>"
 
-## Your external redis host/ip
-APP_ENGINE.SESSION_REDIS_HOST="<Optional>"
+## Provide a string for ltpaPassword in the ibm-ban-secret that will be used when creating the ltpakey.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text.(NOTES: BAN.LTPA_PASSWORD must same as CONTENT.LTPA_PASSWORD)
+BAN.LTPA_PASSWORD="{Base64}<Required>"
 
-## Your external redis port
-APP_ENGINE.SESSION_REDIS_PORT="<Optional>"
+## Provide a string for keystorePassword in the ibm-ban-secret that will be used when creating the keystore.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: BAN.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
+BAN.KEYSTORE_PASSWORD="{Base64}<Required>"
 
-## If your redis enabled TLS connection set this to true, You should add redis server CA certificate in tls_trust_list or trusted_certificate_list
-## The default value is "false"
-APP_ENGINE.SESSION_REDIS_TLS_ENABLED="false"
+## Provide the user name for jMail used by BAN. For example: "jMailAdmin"
+BAN.JMAIL_USER_NAME="<Optional>"
 
-## If enabled Redis SSL, you need to upload the SSL certificate file (rename redis.pem) into a S3 bucket folder, and provide the S3 bucket URL of the folder.
-APP_ENGINE.SESSION_REDIS_SSL_CERT_FILE_FOLDER="s3://yours3bucket/folder-name/"
-
-## The name of the secret that contains the Redis SSL certificate.
-APP_ENGINE.SESSION_REDIS_SSL_SECRET_NAME="ibm-dba-ae-redis-cacert"
-
-## If you are using Redis V6 and above with username fill in this field. Otherwise leave this field as empty
-## The default value is empty ""
-APP_ENGINE.SESSION_REDIS_USERNAME=""
+## Provide the user password for jMail used by BAN.
+BAN.JMAIL_USER_PASSWORD="<Optional>"
 
 ####################################################
 ## USER Property for Workflow Runtime ##
 ####################################################
 ## Designate an existing LDAP user for the Workflow Server admin user.
 BAW_RUNTIME.ADMIN_USER="<Required>"
+
+###########################################################################################
+## USER Property for the customized IAM SCIM LDAP attributes for the LDAP (Microsoft Active Directory) configuration ##
+###########################################################################################
+
+## [NOTES:]
+## For information about SCIM parameters used by the CP4BA deployment, you can refer below link: 
+## https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/24.0.0?topic=parameters-ldap-configuration#ldap_kubernetes__scim.
+## For information about LDAP attributes, you can use the ldapsearch tool or other LDAP browser utilitise.
+## How to use ldapsearch tool to get LDAP attributes, you can refer below link: 
+## https://www.ibm.com/docs/en/cloud-paks/foundational-services/4.4?topic=users-updating-scim-ldap-attributes-mapping#about_ldap_attributes.
+
+## Provide the user unique id attribute, the default value "sAMAccountName" for "Microsoft Active Directory".
+## This attribute MUST be set to an LDAP attribute that is unique and immutable.
+SCIM.USER_UNIQUE_ID_ATTRIBUTE="sAMAccountName"
+
+## Provide the user name attribute, the default value "sAMAccountName" for "Microsoft Active Directory".
+SCIM.USER_NAME_ATTRIBUTE="sAMAccountName"
+
+## Provide the user principal name attribute, the default value "sAMAccountName" for "Microsoft Active Directory".
+SCIM.USER_PRINCIPAL_NAME_ATTRIBUTE="sAMAccountName"
+
+## Provide the user display name attribute, the default value "displayName" for "Microsoft Active Directory".
+SCIM.USER_DISPLAY_NAME_ATTRIBUTE="displayName"
+
+## Provide the user given name attribute, the default value "givenName" for "Microsoft Active Directory".
+SCIM.USER_GIVEN_NAME_ATTRIBUTE="givenName"
+
+## Provide the user family name attribute, the default value "sn" for "Microsoft Active Directory".
+SCIM.USER_FAMILY_NAME_ATTRIBUTE="sn"
+
+## Provide the user full name attribute, the default value "cn" for "Microsoft Active Directory".
+SCIM.USER_FULL_NAME_ATTRIBUTE="cn"
+
+## Provide the user external id attribute, the default value "dn" for "Microsoft Active Directory".
+SCIM.USER_EXTERNAL_ID_ATTRIBUTE="dn"
+
+## Provide the user emails attribute, the default value "mail" for "Microsoft Active Directory".
+SCIM.USER_EMAILS_ATTRIBUTE="mail"
+
+## Provide the user created attribute, the default value "whenCreated" for "Microsoft Active Directory".
+SCIM.USER_CREATED_ATTRIBUTE="whenCreated"
+
+## Provide the user lastModified attribute, the default value "whenChanged" for "Microsoft Active Directory".
+SCIM.USER_LASTMODIFIED_ATTRIBUTE="whenChanged"
+
+## Provide the user phoneNumbers value (first), the default value "mobile" for "Microsoft Active Directory".
+SCIM.USER_PHONENUMBERS_VALUE1="mobile"
+
+## Provide the user phoneNumbers type (first), the default value "mobile" for "Microsoft Active Directory".
+SCIM.USER_PHONENUMBERS_TYPE1="mobile"
+
+## Provide the user phoneNumbers value (second), the default value "telephoneNumber" for "Microsoft Active Directory".
+SCIM.USER_PHONENUMBERS_VALUE2="telephoneNumber"
+
+## Provide the user phoneNumbers type (second), the default value "work" for "Microsoft Active Directory".
+SCIM.USER_PHONENUMBERS_TYPE2="work"
+
+## Provide the user object class attribute, the default value "person" for "Microsoft Active Directory".
+SCIM.USER_OBJECT_CLASS_ATTRIBUTE="person"
+
+## Provide the user groups attribute, the default value "memberOf" for "Microsoft Active Directory".
+SCIM.USER_GROUPS_ATTRIBUTE="memberOf"
+
+## Provide the group unique id attribute, the default value "sAMAccountName" for "Microsoft Active Directory".
+## This attribute MUST be set to an LDAP attribute that is unique and immutable.
+SCIM.GROUP_UNIQUE_ID_ATTRIBUTE="sAMAccountName"
+
+## Provide the group name attribute, the default value "cn" for "Microsoft Active Directory".
+SCIM.GROUP_NAME_ATTRIBUTE="cn"
+
+## Provide the group principal name attribute, the default value "cn" for "Microsoft Active Directory".
+SCIM.GROUP_PRINCIPAL_NAME_ATTRIBUTE="cn"
+
+## Provide the group display name attribute, the default value "cn" for "Microsoft Active Directory".
+SCIM.GROUP_DISPLAY_NAME_ATTRIBUTE="cn"
+
+## Provide the group external id attribute, the default value "dn" for "Microsoft Active Directory".
+SCIM.GROUP_EXTERNAL_ID_ATTRIBUTE="dn"
+
+## Provide the group created attribute, the default value "whenCreated" for "Microsoft Active Directory".
+SCIM.GROUP_CREATED_ATTRIBUTE="whenCreated"
+
+## Provide the group lastModified attribute, the default value "whenChanged" for "Microsoft Active Directory".
+SCIM.GROUP_LASTMODIFIED_ATTRIBUTE="whenChanged"
+
+## Provide the group object class attribute, the default value "group" for "Microsoft Active Directory".
+SCIM.GROUP_OBJECT_CLASS_ATTRIBUTE="group"
+
+## Provide the group members attribute, the default value "member" for "Microsoft Active Directory".
+SCIM.GROUP_MEMBERS_ATTRIBUTE="member"

@@ -1,30 +1,4 @@
 ####################################################
-## USER Property for CP4BA ##
-####################################################
-## Use this parameter to specify the license for the CP4A deployment and
-## the possible values are: non-production and production and if not set, the license will
-## be defaulted to production.  This value could be different from the other licenses in the CR.
-CP4BA.CP4BA_LICENSE="<Required>"
-
-## On OCP 3.x and 4.x, the User script will populate these three (3) parameters based on your input for "production" deployment.
-## If you manually deploying without using the User script, then you would provide the different storage classes for the slow, medium
-## and fast storage parameters below.  If you only have 1 storage class defined, then you can use that 1 storage class for all 3 parameters.
-## sc_block_storage_classname is for Zen, Zen requires/recommends block storage (RWO) for metastoreDB
-CP4BA.SLOW_FILE_STORAGE_CLASSNAME="STORAGE"
-CP4BA.MEDIUM_FILE_STORAGE_CLASSNAME="STORAGE"
-CP4BA.FAST_FILE_STORAGE_CLASSNAME="STORAGE"
-CP4BA.BLOCK_STORAGE_CLASS_NAME="STORAGE"
-
-## Enable/disable FIPS mode for the deployment (default value is "false").
-## Note: If set as "true", in order to complete enablement of FIPS for CP4BA, please refer to "FIPS wall" configuration in IBM documentation.
-CP4BA.ENABLE_FIPS="false"
-
-## Enable or disable egress access to external systems.
-## true: All CP4A pods will not have access any external systems unless custom, curated egress network policy or polices with specific 'matchLabels' are created. Please refer to documentation for more detail.
-## false: All CP4A pods will have unrestricted network access to external systems.
-CP4BA.ENABLE_RESTRICTED_INTERNET_ACCESS="true"
-
-####################################################
 ## USER Property for BAN ##
 ####################################################
 ## Provide the user name for the Navigator administrator. For example: "BANAdmin"
@@ -68,8 +42,8 @@ APP_PLAYBACK.SESSION_REDIS_PORT="<Optional>"
 ## The default value is "false"
 APP_PLAYBACK.SESSION_REDIS_TLS_ENABLED="false"
 
-## If enabled Redis SSL, you need copy the SSL certificate file (named redis.pem) into this directory. Default value is "/root/2400-rc2/cert-kubernetes/scripts/cp4ba-prerequisites/propertyfile/cert/db/redis-playback"
-APP_PLAYBACK.SESSION_REDIS_SSL_CERT_FILE_FOLDER="/root/2400-rc2/cert-kubernetes/scripts/cp4ba-prerequisites/propertyfile/cert/db/redis-playback"
+## If enabled Redis SSL, you need to upload the SSL certificate file (named redis.pem) into a S3 bucket folder, and provide the S3 bucket URL of the folder.
+APP_PLAYBACK.SESSION_REDIS_SSL_CERT_FILE_FOLDER="s3://yours3bucket/folder-name/"
 
 ## The name of the secret that contains the Redis SSL certificate.
 APP_PLAYBACK.SESSION_REDIS_SSL_SECRET_NAME="ibm-dba-playback-redis-cacert"
