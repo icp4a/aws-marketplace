@@ -1,8 +1,8 @@
--- Creating DB named: aaedb 
-CREATE DATABASE aaedb AUTOMATIC STORAGE YES USING CODESET UTF-8 TERRITORY US PAGESIZE 32768;
+-- Creating DB named: AAEDB 
+CREATE DATABASE AAEDB AUTOMATIC STORAGE YES USING CODESET UTF-8 TERRITORY US PAGESIZE 32768;
 
 -- connect to the created database:
-CONNECT TO aaedb;
+CONNECT TO AAEDB;
 
 -- Create bufferpool and tablespaces
 CREATE BUFFERPOOL DBASBBP IMMEDIATE SIZE 1024 PAGESIZE 32K;
@@ -18,4 +18,4 @@ GRANT USE OF TABLESPACE AAEENG_TEMP_TS TO user <username>;
 GRANT DBADM ON DATABASE TO USER <username>;
 
 CONNECT RESET;
--- Done creating and tuning DB named: aaedb
+-- Done creating and tuning DB named: AAEDB

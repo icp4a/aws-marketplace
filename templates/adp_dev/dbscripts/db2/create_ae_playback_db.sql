@@ -1,8 +1,8 @@
--- Creating DB named: appdb 
-CREATE DATABASE appdb AUTOMATIC STORAGE YES USING CODESET UTF-8 TERRITORY US PAGESIZE 32768;
+-- Creating DB named: APPDB 
+CREATE DATABASE APPDB AUTOMATIC STORAGE YES USING CODESET UTF-8 TERRITORY US PAGESIZE 32768;
 
 -- connect to the created database:
-CONNECT TO appdb;
+CONNECT TO APPDB;
 
 -- Create bufferpool and tablespaces
 CREATE BUFFERPOOL DBASBBP IMMEDIATE SIZE 1024 PAGESIZE 32K;
@@ -16,4 +16,4 @@ GRANT USE OF TABLESPACE APPENG_TEMP_TS TO USER <username>;
 GRANT DBADM ON DATABASE TO USER <username>;
 
 CONNECT RESET;
--- Done creating and tuning DB named: appdb
+-- Done creating and tuning DB named: APPDB

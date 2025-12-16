@@ -1,5 +1,0 @@
-####################################################
-## USER Property for BAS ##
-####################################################
-## Designate an existing LDAP user for the BAStudio admin user.
-BASTUDIO.ADMIN_USER="<Required>"

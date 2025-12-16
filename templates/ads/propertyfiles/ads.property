@@ -48,8 +48,7 @@ APP_PLAYBACK.SESSION_REDIS_SSL_CERT_FILE_FOLDER="s3://yours3bucket/folder-name/"
 ## The name of the secret that contains the Redis SSL certificate.
 APP_PLAYBACK.SESSION_REDIS_SSL_SECRET_NAME="ibm-dba-playback-redis-cacert"
 
-## If you are using Redis V6 and above with username fill in this field. Otherwise leave this field as empty
-## The default value is empty ""
+## If you are using Redis V6 and above with username fill in this field. Otherwise remove below parameter.
 APP_PLAYBACK.SESSION_REDIS_USERNAME=""
 
 ####################################################
@@ -62,7 +61,7 @@ BASTUDIO.ADMIN_USER="<Required>"
 ## USER Property for ADS ##
 ####################################################
 ## Instantiating an external MongoDB is highly recommended for production use. Default value is "Yes"
-## If change it to "No", you must input an empty value "" to the other related parameters.
+## If change it to "No", you must remove all other parameters below.
 ADS.USE_EXTERNAL_MONGODB="Yes"
 
 ## Provide the gitMongoUri, for example: "mongodb+srv://<sampleDbUser>:<sampleDbPassword>@<mongodb0.example.com>:27017/ads-git?retryWrites=true&w=majority&authSource=admin"

@@ -25,8 +25,8 @@ LDAP_SSL_ENABLED="True"
 ## The name of the secret that contains the LDAP SSL/TLS certificate.
 LDAP_SSL_SECRET_NAME="ibm-cp4ba-ldap-ssl-secret"
 
-## If enabled LDAP SSL, you need to upload the SSL certificate file into your Amazon S3 bucket and copy the S3 URI below.
-LDAP_SSL_CERT_FILE_FOLDER="s3://yours3bucket/example.crt"
+## If enabled LDAP SSL, you need copy the SSL certificate file (named ldap-cert.crt) into this directory. Default value is "/root/cert-kubernetes/scripts/cp4ba-prerequisites/project/cp/propertyfile/cert/ldap"
+LDAP_SSL_CERT_FILE_FOLDER="/root/cert-kubernetes/scripts/cp4ba-prerequisites/project/cp/propertyfile/cert/ldap"
 
 ## The LDAP user name attribute. Semicolon-separated list that must include the first RDN user distinguished names. One possible value is "*:uid" for TDS and "user:sAMAccountName" for AD. Refer to Knowledge Center for more info.
 LDAP_USER_NAME_ATTRIBUTE="user:sAMAccountName"
@@ -49,10 +49,10 @@ LDAP_GROUP_MEMBERSHIP_SEARCH_FILTER="(&(cn=%v)(objectcategory=group))"
 ## The LDAP group membership ID map.  One possible value is "groupofnames:member" for TDS and "memberOf:member" for AD.
 LDAP_GROUP_MEMBER_ID_MAP="memberOf:member"
 
-## Specify the Global Catalog host for LDAP. Leave empty if not applicable, e.g. ""
+## Specify the Global Catalog host for LDAP. Please remove parameter if not applicable.
 LC_AD_GC_HOST=""
 
-## Specify the Global Catalog port for LDAP. Leave empty if not applicable, e.g. ""
+## Specify the Global Catalog port for LDAP. Please remove parameter if not applicable.
 LC_AD_GC_PORT=""
 
 ## One possible value is "(&(sAMAccountName=%v)(objectcategory=user))"

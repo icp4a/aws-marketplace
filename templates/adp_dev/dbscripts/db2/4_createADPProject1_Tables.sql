@@ -960,5 +960,4 @@ CREATE TABLE webhook
     CONSTRAINT webhook_pkey PRIMARY KEY (ID)
 );
 
-
 CONNECT RESET; 

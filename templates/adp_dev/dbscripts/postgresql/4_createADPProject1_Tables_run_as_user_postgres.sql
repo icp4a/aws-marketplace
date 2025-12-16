@@ -4,7 +4,7 @@
 
 \c "proj1" ;
 
-CREATE SCHEMA "ont1" ;
+CREATE SCHEMA IF NOT EXISTS "ont1" ;
 
 -- Create tables 
 
@@ -965,6 +965,7 @@ CREATE TABLE webhook
     COMMENT VARCHAR(1024) ,
     CONSTRAINT webhook_pkey PRIMARY KEY (ID)
 );
+
 -- create triiger for all last_updated_ts column for tables
 CREATE OR REPLACE FUNCTION last_updated_ts_column()
 RETURNS TRIGGER AS $$

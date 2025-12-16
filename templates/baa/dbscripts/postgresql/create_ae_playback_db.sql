@@ -1,8 +1,6 @@
--- create the user
-CREATE ROLE <username> WITH INHERIT LOGIN ENCRYPTED PASSWORD '<password>';
--- create the database:
-CREATE DATABASE appdb WITH OWNER <username> ENCODING 'UTF8';
--- Connect to your database and create schema
-\c appdb;
-CREATE SCHEMA IF NOT EXISTS <username> AUTHORIZATION <username>;
-GRANT ALL ON schema <username> to <username>;
+-- create a new user
+CREATE USER <username> WITH PASSWORD '<password>';
+-- create database appdb
+CREATE DATABASE appdb OWNER <username>;
+-- The following grant is used for databases
+GRANT ALL PRIVILEGES ON DATABASE appdb TO <username>;

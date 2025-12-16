@@ -1,6 +1,6 @@
 -- create a new user
-create user <username> with password '<password>';
+CREATE USER <username> WITH PASSWORD '<password>';
 -- create database aaedb
-create database aaedb owner <username>;
+CREATE DATABASE aaedb OWNER <username>;
 -- The following grant is used for databases
-grant all privileges on database aaedb to <username>;
+GRANT ALL PRIVILEGES ON DATABASE aaedb TO <username>;

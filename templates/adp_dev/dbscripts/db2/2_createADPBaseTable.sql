@@ -23,19 +23,23 @@ CREATE TABLE TENANTINFO
       CONSTRAINT tenantinfo_pkey PRIMARY KEY (tenantid, ontology) 
       );
 
-CREATE TABLE project_usage
-      (project_guid VARCHAR(256),
-      num_docs  integer,
-      num_pages integer,
-      year smallint,
-      month smallint,
-      day_of_month smallint,
-      day_of_week smallint,
-      status smallint,
-      created_ts timestamp default CURRENT_TIMESTAMP
-      );
+-- Table for aggregated project usage data
+-- The table has a primary key on (project_guid, year, month, day_of_month) to be consistent with PG
+-- "status" column is reserved for future use
+-- "created_ts" is re-purposed for the timestamp of the last aggregated document
 
-create index ix_project_usage_year_mon ON project_usage(year,month);
+CREATE TABLE project_usage
+      (project_guid VARCHAR(256) NOT NULL,
+      num_docs  integer NOT NULL,
+      num_pages integer NOT NULL,
+      year SMALLINT NOT NULL,
+      month SMALLINT NOT NULL,
+      day_of_month SMALLINT NOT NULL,
+      day_of_week SMALLINT NOT NULL,
+      status smallint,
+      created_ts timestamp NOT NULL,
+      CONSTRAINT project_usage_pkey PRIMARY KEY (project_guid, year, month, day_of_month)
+      );
 
 CREATE TABLE base_options
 (
@@ -43,6 +47,7 @@ CREATE TABLE base_options
       flags bigint not null with default 0
 );
 
-INSERT INTO base_options(schema_version) values('23.0.2');
+-- Put a placeholder for the schema_version. The version will be updated by a common function
+INSERT INTO base_options(schema_version) values('24.0.0');
 
 CONNECT RESET;

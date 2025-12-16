@@ -1,4 +1,4 @@
--- Please ensure you already have existing oracle instance or pluggable database (PDB). If not, please create one firstly
+-- Please ensure you already have existing oracle instance or pluggable database (PDB). If not, please create one first
 
 -- create a new user
 CREATE USER APPDB IDENTIFIED BY "<password>";

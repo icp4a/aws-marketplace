@@ -15,8 +15,7 @@ GRANT USE OF TABLESPACE AAEENG_TEMP_TS TO user <username>;
 
 -- The following grant is used for databases without enhanced security.
 -- For more information, review the IBM documentation for enhancing security for DB2.
-GRANT CONNECT ON DATABASE TO USER <username>;
-CREATE SCHEMA USER AUTHORIZATION <username>;
+GRANT DBADM ON DATABASE TO USER <username>;
 
 CONNECT RESET;
 -- Done creating and tuning DB named: AAEDB

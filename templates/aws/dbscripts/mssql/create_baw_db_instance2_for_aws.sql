@@ -1,6 +1,6 @@
 -- create the database:
-CREATE DATABASE awsdb COLLATE SQL_Latin1_General_CP1_CI_AS;
-ALTER DATABASE awsdb SET READ_COMMITTED_SNAPSHOT ON;
+CREATE DATABASE AWSDB COLLATE SQL_Latin1_General_CP1_CI_AS;
+ALTER DATABASE AWSDB SET READ_COMMITTED_SNAPSHOT ON;
 
 USE MASTER
 GO
@@ -15,7 +15,7 @@ EXEC sp_addrolemember N'SqlJDBCXAUser', N'<username>';
 GO
 
 -- Creating users and schemas
-USE awsdb
+USE AWSDB
 GO
 CREATE USER <username> FOR LOGIN <username> WITH DEFAULT_SCHEMA=<username>
 GO

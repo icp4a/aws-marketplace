@@ -139,8 +139,7 @@ APP_ENGINE.SESSION_REDIS_SSL_CERT_FILE_FOLDER="s3://yours3bucket/folder-name/"
 ## The name of the secret that contains the Redis SSL certificate.
 APP_ENGINE.SESSION_REDIS_SSL_SECRET_NAME="ibm-dba-ae-redis-cacert"
 
-## If you are using Redis V6 and above with username fill in this field. Otherwise leave this field as empty
-## The default value is empty ""
+## If you are using Redis V6 and above with username fill in this field. Otherwise remove below parameter.
 APP_ENGINE.SESSION_REDIS_USERNAME=""
 
 ####################################################
@@ -170,8 +169,7 @@ APP_PLAYBACK.SESSION_REDIS_SSL_CERT_FILE_FOLDER="s3://yours3bucket/folder-name/"
 ## The name of the secret that contains the Redis SSL certificate.
 APP_PLAYBACK.SESSION_REDIS_SSL_SECRET_NAME="ibm-dba-playback-redis-cacert"
 
-## If you are using Redis V6 and above with username fill in this field. Otherwise leave this field as empty
-## The default value is empty ""
+## If you are using Redis V6 and above with username fill in this field. Otherwise remove below parameter.
 APP_PLAYBACK.SESSION_REDIS_USERNAME=""
 
 ####################################################

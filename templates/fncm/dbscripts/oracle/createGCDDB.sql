@@ -1,4 +1,10 @@
--- Please ensure you already have existing oracle instance or pluggable database (PDB). If not, please create one firstly
+-- Please ensure you already have existing oracle instance or pluggable database (PDB). If not, please create one first
+
+-- NOTE: The tablespace creation command below uses file-based storage.  
+-- If your Oracle environment uses ASM (Automatic Storage Management),  
+-- update the 'DATAFILE' and 'TEMPFILE' paths to reflect your ASM configuration.  
+-- Additionally, ensure that database object names (e.g., tablespace, user, etc.)  
+-- match the expected naming conventions. Any deviations may cause issues.
 
 -- create tablespace
 -- Please make sure you change the DATAFILE and TEMPFILE to your Oracle database.

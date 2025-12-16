@@ -1,41 +1,41 @@
--- create awsdocs object store database, you could update FILENAME as your requirement.
+-- create AWSDOCS object store database, you could update FILENAME as your requirement.
 -- Please make sure you change the drive and path to your MSSQL database.
-CREATE DATABASE awsdocs
+CREATE DATABASE AWSDOCS
 ON PRIMARY
-(  NAME = awsdocs_DATA,
-   FILENAME = 'C:\MSSQL_DATABASE\awsdocs_DATA.mdf',
+(  NAME = AWSDOCS_DATA,
+   FILENAME = 'C:\MSSQL_DATABASE\AWSDOCS_DATA.mdf',
    SIZE = 400MB,
    FILEGROWTH = 128MB ),
 
-FILEGROUP awsdocsSA_DATA_FG
-(  NAME = awsdocsSA_DATA,
-   FILENAME = 'C:\MSSQL_DATABASE\awsdocsSA_DATA.ndf',
+FILEGROUP AWSDOCSSA_DATA_FG
+(  NAME = AWSDOCSSA_DATA,
+   FILENAME = 'C:\MSSQL_DATABASE\AWSDOCSSA_DATA.ndf',
    SIZE = 300MB,
    FILEGROWTH = 128MB),
 
-FILEGROUP awsdocsSA_IDX_FG
-(  NAME = awsdocsSA_IDX,
-   FILENAME = 'C:\MSSQL_DATABASE\awsdocsSA_IDX.ndf',
+FILEGROUP AWSDOCSSA_IDX_FG
+(  NAME = AWSDOCSSA_IDX,
+   FILENAME = 'C:\MSSQL_DATABASE\AWSDOCSSA_IDX.ndf',
    SIZE = 300MB,
    FILEGROWTH = 128MB)
 
 LOG ON
-(  NAME = 'awsdocs_LOG',
-   FILENAME = 'C:\MSSQL_DATABASE\awsdocs_LOG.ldf',
+(  NAME = 'AWSDOCS_LOG',
+   FILENAME = 'C:\MSSQL_DATABASE\AWSDOCS_LOG.ldf',
    SIZE = 160MB,
    FILEGROWTH = 50MB )
 GO
 
-ALTER DATABASE awsdocs SET RECOVERY SIMPLE
+ALTER DATABASE AWSDOCS SET RECOVERY SIMPLE
 GO
 
-ALTER DATABASE awsdocs SET AUTO_CREATE_STATISTICS ON
+ALTER DATABASE AWSDOCS SET AUTO_CREATE_STATISTICS ON
 GO
 
-ALTER DATABASE awsdocs SET AUTO_UPDATE_STATISTICS ON
+ALTER DATABASE AWSDOCS SET AUTO_UPDATE_STATISTICS ON
 GO
 
-ALTER DATABASE awsdocs SET READ_COMMITTED_SNAPSHOT ON
+ALTER DATABASE AWSDOCS SET READ_COMMITTED_SNAPSHOT ON
 GO
 
 -- create a SQL Server login account for the database user of each of the databases and update the master database to grant permission for XA transactions for the login account
@@ -52,7 +52,7 @@ EXEC sp_addrolemember N'SqlJDBCXAUser', N'<username>';
 GO
 
 -- Creating users and schemas for object store database
-USE awsdocs
+USE AWSDOCS
 GO
 CREATE USER <username> FOR LOGIN <username> WITH DEFAULT_SCHEMA=<username>
 GO
