@@ -20,14 +20,14 @@ BASTUDIO.ADMIN_USER="<Required>"
 
 ## [NOTES:]
 ## For information about SCIM parameters used by the CP4BA deployment, you can refer below link: 
-## https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/23.0.2?topic=parameters-ldap-configuration#ldap_kubernetes__scim.
+## https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/26.0.0?topic=parameters-ldap-configuration#ldap_kubernetes__scim.
 ## For information about LDAP attributes, you can use the ldapsearch tool or other LDAP browser utilitise.
 ## How to use ldapsearch tool to get LDAP attributes, you can refer below link: 
-## https://www.ibm.com/docs/en/cloud-paks/foundational-services/4.2?topic=users-updating-scim-ldap-attributes-mapping#about_ldap_attributes.
+## https://www.ibm.com/docs/en/cloud-paks/foundational-services/4.x_cd?topic=users-updating-scim-ldap-attributes-mapping#about_ldap_attributes.
 
-## Provide the user unique id attribute, the default value "dn" for "Microsoft Active Directory".
+## Provide the user unique id attribute, the default value "sAMAccountName" for "Microsoft Active Directory".
 ## This attribute MUST be set to an LDAP attribute that is unique and immutable.
-SCIM.USER_UNIQUE_ID_ATTRIBUTE="dn"
+SCIM.USER_UNIQUE_ID_ATTRIBUTE="sAMAccountName"
 
 ## Provide the user name attribute, the default value "sAMAccountName" for "Microsoft Active Directory".
 SCIM.USER_NAME_ATTRIBUTE="sAMAccountName"
@@ -77,9 +77,9 @@ SCIM.USER_OBJECT_CLASS_ATTRIBUTE="person"
 ## Provide the user groups attribute, the default value "memberOf" for "Microsoft Active Directory".
 SCIM.USER_GROUPS_ATTRIBUTE="memberOf"
 
-## Provide the group unique id attribute, the default value "dn" for "Microsoft Active Directory".
+## Provide the group unique id attribute, the default value "sAMAccountName" for "Microsoft Active Directory".
 ## This attribute MUST be set to an LDAP attribute that is unique and immutable.
-SCIM.GROUP_UNIQUE_ID_ATTRIBUTE="dn"
+SCIM.GROUP_UNIQUE_ID_ATTRIBUTE="sAMAccountName"
 
 ## Provide the group name attribute, the default value "cn" for "Microsoft Active Directory".
 SCIM.GROUP_NAME_ATTRIBUTE="cn"

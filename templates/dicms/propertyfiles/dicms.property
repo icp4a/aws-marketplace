@@ -1,53 +1,4 @@
 ####################################################
-## USER Property for FNCM ##
-####################################################
-## Provide the user name for P8Domain. For example: "CEAdmin"
-CONTENT.APPLOGIN_USER="<Required>"
-
-## Provide the user password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for P8Domain.
-CONTENT.APPLOGIN_PASSWORD="{Base64}<Required>"
-
-## Provide a string for ltpaPassword in the ibm-fncm-secret that will be used when creating the ltpakey.
-## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: CONTENT.LTPA_PASSWORD must same as BAN.LTPA_PASSWORD)
-CONTENT.LTPA_PASSWORD="{Base64}<Required>"
-
-## Provide a string for keystorePassword in the ibm-fncm-secret that will be used when creating the keystore.
-## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: CONTENT.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
-CONTENT.KEYSTORE_PASSWORD="{Base64}<Required>"
-
-## Provide a string for keystorePassword in the ibm-iccsap-secret that will be used when creating the keystore.
-## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: ICCSAP.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
-ICCSAP.KEYSTORE_PASSWORD="{Base64}<Required>"
-
-## Provide ARCHIVE_USERID used in the ibm-icc-secret secret for the security details of the login credentials for the Content Platform Engine services. This login user ID must have domain-wide read access to all documents to be indexed.
-## This login user ID must have domain-wide read access to all documents to be indexed.
-CONTENT.ARCHIVE_USER_ID="<Required>"
-
-## Provide ARCHIVE_PASSWORD used in the ibm-icc-secret secret (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text).
-CONTENT.ARCHIVE_USER_PASSWORD="{Base64}<Required>"
-
-## Provide a string for keystorePassword in the ibm-ier-secret that will be used when creating the keystore.
-## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: IER.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
-IER.KEYSTORE_PASSWORD="{Base64}<Required>"
-
-####################################################
-## USER Property for Content initialization ##
-####################################################
-## Enable/disable ECM (FNCM) / BAN initialization (e.g., creation of P8 domain, creation/configuration of object stores,
-## creation/configuration of CSS servers, and initialization of Navigator (ICN).
-## The default valuse is "Yes", set "No" to disable.
-CONTENT_INITIALIZATION.ENABLE="Yes"
-
-## user name for GCD administrator, for example, "CEAdmin". This parameter accepts comma-separated lists (without spacing), for example, "CEAdmin1,CEAdmin2"
-CONTENT_INITIALIZATION.LDAP_ADMIN_USER_NAME="<Required>"
-
-## Names of groups containing GCD administrators, for example, "P8Administrators". This parameter accepts comma-separated lists (without spacing), for example, "P8Group1,P8Group2"
-CONTENT_INITIALIZATION.LDAP_ADMINS_GROUPS_NAME="<Required>"
-
-## user name and group name for object store admin, for example, "CEAdmin" or "P8Administrators". This parameter accepts comma-separated lists (without spacing), for example, "P8Group1,P8Group2"
-CONTENT_INITIALIZATION.CPE_OBJ_STORE_ADMIN_USER_GROUPS="<Required>"
-
-####################################################
 ## USER Property for BAN ##
 ####################################################
 ## Provide the user name for the Navigator administrator. For example: "BANAdmin"
@@ -70,16 +21,60 @@ BAN.JMAIL_USER_NAME="<Optional>"
 ## Provide the user password for jMail used by BAN.
 BAN.JMAIL_USER_PASSWORD="<Optional>"
 
+####################################################
+## USER Property for App Engine Playback Server ##
+####################################################
+## Designate an existing LDAP user for the Playback Application Engine admin user.
+## This user ID should be in the IBM Business Automation Navigator administrator role, as specified as appLoginUsername in the Navigator secret.
+APP_PLAYBACK.ADMIN_USER="<Required>"
+
+## If you want better HA experience. Set the session.use_external_store to true, fill in your redis server information
+## The default value is "false"
+APP_PLAYBACK.SESSION_REDIS_USE_EXTERNAL_STORE="false"
+
+## Your external redis host/ip
+APP_PLAYBACK.SESSION_REDIS_HOST="<Optional>"
+
+## Your external redis port
+APP_PLAYBACK.SESSION_REDIS_PORT="<Optional>"
+
+## If your redis enabled TLS connection set this to true, You should add redis server CA certificate in tls_trust_list or trusted_certificate_list
+## The default value is "false"
+APP_PLAYBACK.SESSION_REDIS_TLS_ENABLED="false"
+
+## If enabled Redis SSL, you need to upload the SSL certificate file (named redis.pem) into a S3 bucket folder, and provide the S3 bucket URL of the folder.
+APP_PLAYBACK.SESSION_REDIS_SSL_CERT_FILE_FOLDER="s3://yours3bucket/folder-name/"
+
+## The name of the secret that contains the Redis SSL certificate.
+APP_PLAYBACK.SESSION_REDIS_SSL_SECRET_NAME="ibm-dba-playback-redis-cacert"
+
+## If you are using Redis V6 and above with username fill in this field. Otherwise remove below parameter.
+APP_PLAYBACK.SESSION_REDIS_USERNAME=""
+
+####################################################
+## USER Property for BAS ##
+####################################################
+## Designate an existing LDAP user for the BAStudio admin user.
+BASTUDIO.ADMIN_USER="<Required>"
+
+# ============================================================
+# OPTIONAL COMPONENT BLOCKS
+# Components that require NO extra properties here:
+#   - Decision Designer (ads_designer)
+#   - Decision Runtime (ads_runtime)
+#   - Business Automation Insights (bai)
+# ============================================================
+
 ###########################################################################################
 ## USER Property for the customized IAM SCIM LDAP attributes for the LDAP (Microsoft Active Directory) configuration ##
 ###########################################################################################
 
 ## [NOTES:]
-## For information about SCIM parameters used by the CP4BA deployment, you can refer below link: 
-## https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/24.0.0?topic=parameters-ldap-configuration#ldap_kubernetes__scim.
+## For information about SCIM parameters used by the CP4BA deployment, you can refer below link:
+## https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/26.0.0?topic=parameters-ldap-configuration#ldap_kubernetes__scim.
 ## For information about LDAP attributes, you can use the ldapsearch tool or other LDAP browser utilitise.
-## How to use ldapsearch tool to get LDAP attributes, you can refer below link: 
-## https://www.ibm.com/docs/en/cloud-paks/foundational-services/4.4?topic=users-updating-scim-ldap-attributes-mapping#about_ldap_attributes.
+## How to use ldapsearch tool to get LDAP attributes, you can refer below link:
+## https://www.ibm.com/docs/en/cloud-paks/foundational-services/4.x_cd?topic=users-updating-scim-ldap-attributes-mapping#about_ldap_attributes.
 
 ## Provide the user unique id attribute, the default value "sAMAccountName" for "Microsoft Active Directory".
 ## This attribute MUST be set to an LDAP attribute that is unique and immutable.

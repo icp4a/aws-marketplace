@@ -130,3 +130,15 @@ dbserver1.STUDIO_DB_CURRENT_SCHEMA="<Optional>"
 dbserver1.STUDIO_DB_USER_NAME="<youruser1>"
 ## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the user of Business Automation Studio database.
 dbserver1.STUDIO_DB_USER_PASSWORD="{Base64}<yourpassword>"
+
+####################################################
+## Property for ADP Git Gateway Database Name and User on postgresql type database ##
+####################################################
+## Provide the name of the database for DICMS. For example: "adpggdb" (Notes: the database name must be lowercase)
+dbserver1.ADP_GG_DB_NAME="adpggdb"
+## Provide the ADP Git Gateway schema name. Default is the database user name. Provide a custom name if needed.
+dbserver1.ADP_GG_DB_SCHEMA="<youruser1>"
+## Provide the user name of the database for the ADP Git Gateway of P8Domain. For example: "dbuser1"
+dbserver1.ADP_GG_DB_USER_NAME="<youruser1>"
+## Provide the password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) of the database user for the DICMS of P8Domain.
+dbserver1.ADP_GG_DB_USER_PASSWORD="{Base64}<yourpassword>"

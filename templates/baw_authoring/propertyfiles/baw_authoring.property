@@ -15,6 +15,21 @@ CONTENT.LTPA_PASSWORD="{Base64}<Required>"
 ## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: CONTENT.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
 CONTENT.KEYSTORE_PASSWORD="{Base64}<Required>"
 
+## Provide a string for keystorePassword in the ibm-iccsap-secret that will be used when creating the keystore.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: ICCSAP.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
+ICCSAP.KEYSTORE_PASSWORD="{Base64}<Required>"
+
+## Provide ARCHIVE_USERID used in the ibm-icc-secret secret for the security details of the login credentials for the Content Platform Engine services. This login user ID must have domain-wide read access to all documents to be indexed.
+## This login user ID must have domain-wide read access to all documents to be indexed.
+CONTENT.ARCHIVE_USER_ID="<Required>"
+
+## Provide ARCHIVE_PASSWORD used in the ibm-icc-secret secret (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text).
+CONTENT.ARCHIVE_USER_PASSWORD="{Base64}<Required>"
+
+## Provide a string for keystorePassword in the ibm-ier-secret that will be used when creating the keystore.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: IER.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
+IER.KEYSTORE_PASSWORD="{Base64}<Required>"
+
 ####################################################
 ## USER Property for Content initialization ##
 ####################################################
@@ -76,16 +91,143 @@ BAN.JMAIL_USER_PASSWORD="<Optional>"
 ## Designate an existing LDAP user for the BAStudio admin user.
 BASTUDIO.ADMIN_USER="<Required>"
 
+# ============================================================
+# OPTIONAL COMPONENT BLOCKS
+# Include the sections below ONLY when the corresponding
+# optional component is selected in the CFT Patterns parameter.
+# Components that require NO extra properties here:
+#   - Business Automation Insights (bai)
+#   - Data Collector and Data Indexer (pfs)
+#   - Exposed Kafka Services (kafka)
+#   - Exposed OpenSearch (opensearch)
+#   - Application Connectors (application_connectors)
+#   - Workflow Runtime MCP Server (workflow_runtime_mcp_server)
+# ============================================================
+
+####################################################
+## [OPTIONAL] Application Engine (APP_ENGINE)
+## Required when "Application Designer" optional component is selected,
+## OR when BAW Authoring is combined with a pattern that triggers AE
+## (e.g., document_processing, application).
+####################################################
+
+## Designate an existing LDAP user for the Application Engine admin user.
+## This user must be in the IBM Business Automation Navigator administrator role.
+## [REQUIRED when Application Designer is selected]
+#APP_ENGINE.ADMIN_USER="<Required>"
+
+## Set to "true" to enable an external Redis store for Application Engine HA sessions.
+#APP_ENGINE.SESSION_REDIS_USE_EXTERNAL_STORE="false"
+
+## External Redis host/IP address.
+## [REQUIRED when SESSION_REDIS_USE_EXTERNAL_STORE="true"]
+#APP_ENGINE.SESSION_REDIS_HOST="<Optional>"
+
+## External Redis port.
+## [REQUIRED when SESSION_REDIS_USE_EXTERNAL_STORE="true"]
+#APP_ENGINE.SESSION_REDIS_PORT="<Optional>"
+
+## Set to "true" if Redis has TLS enabled.
+#APP_ENGINE.SESSION_REDIS_TLS_ENABLED="false"
+
+## Path to the folder containing the Redis SSL certificate (named redis.pem).
+## [REQUIRED when SESSION_REDIS_TLS_ENABLED="true"]
+#APP_ENGINE.SESSION_REDIS_SSL_CERT_FILE_FOLDER="<Optional>"
+
+## Secret name containing the Redis SSL certificate.
+#APP_ENGINE.SESSION_REDIS_SSL_SECRET_NAME="ibm-dba-ae-redis-cacert"
+
+## Redis username (only for Redis v6+ with username auth, otherwise leave empty).
+#APP_ENGINE.SESSION_REDIS_USERNAME=""
+
+####################################################
+## [OPTIONAL] Application Playback Server (APP_PLAYBACK)
+## Required when "Application Designer" optional component is selected
+## (same trigger as APP_ENGINE above).
+####################################################
+
+## Designate an existing LDAP user for the Playback Application Engine admin user.
+## [REQUIRED when Application Designer is selected]
+#APP_PLAYBACK.ADMIN_USER="<Required>"
+
+## Set to "true" to enable an external Redis store for Playback Server HA sessions.
+#APP_PLAYBACK.SESSION_REDIS_USE_EXTERNAL_STORE="false"
+
+## External Redis host/IP address.
+## [REQUIRED when SESSION_REDIS_USE_EXTERNAL_STORE="true"]
+#APP_PLAYBACK.SESSION_REDIS_HOST="<Optional>"
+
+## External Redis port.
+## [REQUIRED when SESSION_REDIS_USE_EXTERNAL_STORE="true"]
+#APP_PLAYBACK.SESSION_REDIS_PORT="<Optional>"
+
+## Set to "true" if Redis has TLS enabled.
+#APP_PLAYBACK.SESSION_REDIS_TLS_ENABLED="false"
+
+## Path to the folder containing the Redis SSL certificate (named redis.pem).
+## [REQUIRED when SESSION_REDIS_TLS_ENABLED="true"]
+#APP_PLAYBACK.SESSION_REDIS_SSL_CERT_FILE_FOLDER="<Optional>"
+
+## Secret name containing the Redis SSL certificate.
+#APP_PLAYBACK.SESSION_REDIS_SSL_SECRET_NAME="ibm-dba-playback-redis-cacert"
+
+## Redis username (only for Redis v6+ with username auth, otherwise leave empty).
+#APP_PLAYBACK.SESSION_REDIS_USERNAME=""
+
+####################################################
+## [OPTIONAL] Workplace Assistant / (Preview) Authoring Assistant
+## Required when either of the following is selected:
+##   - "Workplace Assistant"           → set RUN_WORKPLACE_AGENT="true"
+##   - "(Preview) Authoring Assistant" → set RUN_AUTHORING_AGENT="true"
+## Both can be enabled together.
+####################################################
+
+## IBM Cloud API key for WatsonX.ai SaaS authentication.
+## Obtain at: https://cloud.ibm.com/iam/apikeys
+## [REQUIRED when Workplace Assistant or Authoring Assistant is selected]
+#WFA.WATSONX_API_KEY="<Required>"
+
+## WatsonX.ai SaaS service endpoint URL.
+## Common values:
+##   US South: https://us-south.ml.cloud.ibm.com
+##   EU De:    https://eu-de.ml.cloud.ibm.com
+##   EU GB:    https://eu-gb.ml.cloud.ibm.com
+## [REQUIRED when Workplace Assistant or Authoring Assistant is selected]
+#WFA.WATSONX_URL="https://us-south.ml.cloud.ibm.com"
+
+## WatsonX.ai project ID associated with the deployed model.
+## [REQUIRED when Workplace Assistant or Authoring Assistant is selected]
+#WFA.WATSONX_PROJECT_ID="<Required>"
+
+## Set to "true" to enable the Workplace Assistant (Runtime Agent).
+## [REQUIRED when "Workplace Assistant" optional component is selected]
+#WFA.RUN_WORKPLACE_AGENT="false"
+
+## Set to "true" to enable the (Preview) Authoring Assistant.
+## [REQUIRED when "(Preview) Authoring Assistant" optional component is selected]
+#WFA.RUN_AUTHORING_AGENT="true"
+
+## Optional LLM model ID override. Defaults to meta-llama/llama-3-3-70b-instruct.
+#WFA.WATSONX_MODEL_ID="<Optional>"
+
+## Custom WatsonX deployment ID for the Authoring Agent.
+## Only needed if using a custom deployment LLM model with BAW Authoring.
+#WFA.AUTHORING_AGENT_WATSONX_DEPLOYMENT_ID="<Optional>"
+
+## Custom WatsonX deployment ID for the Runtime Agent.
+## Only needed if using a custom deployment LLM model.
+#WFA.RUNTIME_AGENT_WATSONX_DEPLOYMENT_ID="<Optional>"
+
 ###########################################################################################
 ## USER Property for the customized IAM SCIM LDAP attributes for the LDAP (Microsoft Active Directory) configuration ##
 ###########################################################################################
 
 ## [NOTES:]
 ## For information about SCIM parameters used by the CP4BA deployment, you can refer below link: 
-## https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/24.0.0?topic=parameters-ldap-configuration#ldap_kubernetes__scim.
+## https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/26.0.0?topic=parameters-ldap-configuration#ldap_kubernetes__scim.
 ## For information about LDAP attributes, you can use the ldapsearch tool or other LDAP browser utilitise.
 ## How to use ldapsearch tool to get LDAP attributes, you can refer below link: 
-## https://www.ibm.com/docs/en/cloud-paks/foundational-services/4.4?topic=users-updating-scim-ldap-attributes-mapping#about_ldap_attributes.
+## https://www.ibm.com/docs/en/cloud-paks/foundational-services/4.x_cd?topic=users-updating-scim-ldap-attributes-mapping#about_ldap_attributes.
 
 ## Provide the user unique id attribute, the default value "sAMAccountName" for "Microsoft Active Directory".
 ## This attribute MUST be set to an LDAP attribute that is unique and immutable.

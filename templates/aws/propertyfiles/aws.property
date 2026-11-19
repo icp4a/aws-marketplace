@@ -15,6 +15,21 @@ CONTENT.LTPA_PASSWORD="{Base64}<Required>"
 ## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: CONTENT.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
 CONTENT.KEYSTORE_PASSWORD="{Base64}<Required>"
 
+## Provide a string for keystorePassword in the ibm-iccsap-secret that will be used when creating the keystore.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: ICCSAP.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
+ICCSAP.KEYSTORE_PASSWORD="{Base64}<Required>"
+
+## Provide ARCHIVE_USERID used in the ibm-icc-secret secret for the security details of the login credentials for the Content Platform Engine services. This login user ID must have domain-wide read access to all documents to be indexed.
+## This login user ID must have domain-wide read access to all documents to be indexed.
+CONTENT.ARCHIVE_USER_ID="<Required>"
+
+## Provide ARCHIVE_PASSWORD used in the ibm-icc-secret secret (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text).
+CONTENT.ARCHIVE_USER_PASSWORD="{Base64}<Required>"
+
+## Provide a string for keystorePassword in the ibm-ier-secret that will be used when creating the keystore.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: IER.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
+IER.KEYSTORE_PASSWORD="{Base64}<Required>"
+
 ####################################################
 ## USER Property for Content initialization ##
 ####################################################
@@ -33,7 +48,37 @@ CONTENT_INITIALIZATION.LDAP_ADMINS_GROUPS_NAME="<Required>"
 CONTENT_INITIALIZATION.CPE_OBJ_STORE_ADMIN_USER_GROUPS="<Required>"
 
 ####################################################
+## USER Property for BAN ##
+####################################################
+## Provide the user name for the Navigator administrator. For example: "BANAdmin"
+BAN.APPLOGIN_USER="<Required>"
+
+## Provide the user password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for the Navigator administrator.
+BAN.APPLOGIN_PASSWORD="{Base64}<Required>"
+
+## Provide a string for ltpaPassword in the ibm-ban-secret that will be used when creating the ltpakey.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text.(NOTES: BAN.LTPA_PASSWORD must match CONTENT.LTPA_PASSWORD)
+BAN.LTPA_PASSWORD="{Base64}<Required>"
+
+## Provide a string for keystorePassword in the ibm-ban-secret that will be used when creating the keystore.
+## If password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text. (NOTES: BAN.KEYSTORE_PASSWORD must exceed 16 characters when fips enabled.)
+BAN.KEYSTORE_PASSWORD="{Base64}<Required>"
+
+## Provide the user name for jMail used by BAN. For example: "jMailAdmin"
+BAN.JMAIL_USER_NAME="<Optional>"
+
+## Provide the user password for jMail used by BAN.
+BAN.JMAIL_USER_PASSWORD="<Optional>"
+
+####################################################
 ## USER Property for Automation Workstream Services ##
 ####################################################
 ## Designate an existing LDAP user for the Workstreams Server admin user.
 AWS.ADMIN_USER="<Required>"
+
+# ============================================================
+# OPTIONAL COMPONENT BLOCKS
+# Components that require NO extra properties here:
+#   - Exposed Kafka Services (kafka)
+#   - Exposed OpenSearch (opensearch)
+# ============================================================

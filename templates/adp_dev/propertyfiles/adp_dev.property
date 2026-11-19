@@ -89,19 +89,7 @@ ADP.ENV_OWNER_USER_NAME="<Required>"
 ## Provide the the environment owner password (if password has special characters then Base64 encoded with {Base64} prefix, otherwise use plain text) for ADP.
 ADP.ENV_OWNER_USER_PASSWORD="{Base64}<Required>"
 
-## IMPORTANT: It is recommended to use an external Enterprise MongoDB instance in a production environment. The embedded MongoDB is provided for demo purposes only when set this value as "No". The default value is "Yes".
-ADP.USE_EXTERNAL_MONGODB="Yes"
-
-## Provide the mongoURI, for example: "mongodb://mongo:<mongoPwd>@<mongo_database_hostname>:<mongo_database_port>/<mongo_database_name>?authSource=admin&connectTimeoutMS=3000"
-ADP.EXTERNAL_MONGO_URI="<Optional>"
-
-## Provide the user name for your own Enterprise MongoDB instance used by ADP. For example: "admin"
-ADP.MONGO_USER_NAME="<Optional>"
-
-## Provide the user password for your own Enterprise MongoDB instance used by ADP.
-ADP.MONGO_USER_PASSWORD="<Optional>"
-
-## Configure a secure connection to the required Git server. 
+## Configure a secure connection to the required Git server.
 ADP.ENABLE_GIT_SSL_CONNECTION="false"
 
 ## If enabled secure connection for Git server, you need to upload the SSL certificate file (renamed git-cert.crt) into a S3 bucket folder, and provide the S3 bucket URL of the folder.
@@ -184,10 +172,10 @@ BASTUDIO.ADMIN_USER="<Required>"
 
 ## [NOTES:]
 ## For information about SCIM parameters used by the CP4BA deployment, you can refer below link: 
-## https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/24.0.0?topic=parameters-ldap-configuration#ldap_kubernetes__scim.
+## https://www.ibm.com/docs/en/cloud-paks/cp-biz-automation/26.0.0?topic=parameters-ldap-configuration#ldap_kubernetes__scim.
 ## For information about LDAP attributes, you can use the ldapsearch tool or other LDAP browser utilitise.
 ## How to use ldapsearch tool to get LDAP attributes, you can refer below link: 
-## https://www.ibm.com/docs/en/cloud-paks/foundational-services/4.4?topic=users-updating-scim-ldap-attributes-mapping#about_ldap_attributes.
+## https://www.ibm.com/docs/en/cloud-paks/foundational-services/4.x_cd?topic=users-updating-scim-ldap-attributes-mapping#about_ldap_attributes.
 
 ## Provide the user unique id attribute, the default value "sAMAccountName" for "Microsoft Active Directory".
 ## This attribute MUST be set to an LDAP attribute that is unique and immutable.

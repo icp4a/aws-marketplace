@@ -7,6 +7,7 @@ grant create on tablespace gcddb_tbs to <username>;
 
 -- create database gcddb
 create database gcddb owner <username> tablespace gcddb_tbs template template0 encoding UTF8 ;
+
 -- Connect to your database and create schema
 \c gcddb;
 CREATE SCHEMA IF NOT EXISTS <username> AUTHORIZATION <username>;

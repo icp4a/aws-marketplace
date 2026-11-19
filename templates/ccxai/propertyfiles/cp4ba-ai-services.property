@@ -1,0 +1,109 @@
+###############################################################################
+#
+# Licensed Materials - Property of IBM
+#
+# (C) Copyright IBM Corp. 2026. All Rights Reserved.
+#
+# US Government Users Restricted Rights - Use, duplication or
+# disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+#
+###############################################################################
+#
+# Template: IBM Content Cortex AI Services - WatsonX.ai SaaS Configuration
+#
+# This file is a pre-filled template for deploying Content Cortex AI Services
+# with a single IBM WatsonX.ai SaaS provider. Replace all <Required> values
+# before running generate mode.
+#
+#
+# Rules:
+#   - Every value MUST be enclosed in double quotes.
+#   - Replace every <Required> placeholder before running the script.
+#   - Lines starting with '#' are ignored.
+#
+###############################################################################
+
+## NOTES: Please replace all "<Required>" values with actual configuration values.
+##        Values marked as "<Required>" must be provided for the deployment to work correctly.
+
+####################################################
+## Common Configuration for Content Cortex AI Services
+####################################################
+
+## Enable Redis for token caching and improved performance.
+## Set to "true" to enable Redis, or "false" to disable. Default: "false"
+ENABLE_REDIS="false"
+
+###############################################################################
+# AI Model Providers Configuration
+###############################################################################
+
+## IMPORTANT: Default Model Selection
+## - Exactly ONE model across ALL providers must have DEFAULT=true
+## - The model with DEFAULT=true will be used as the active_llm in the deployment
+## - If multiple models have DEFAULT=true, validation will fail
+## - If no model has DEFAULT=true, validation will fail
+
+####################################################
+## Provider 1: WatsonX.ai SaaS
+####################################################
+[PROVIDER_1]
+
+## Unique identifier for this provider. This ID is used to reference the provider in the deployment.
+PROVIDER_ID = "watsonx_saas_1"
+
+## Enable or disable this provider. Set to false to exclude this provider from deployment.
+## At least one provider must be enabled.
+ENABLED = "true"
+
+## Provider name determines which AI service is being used.
+## Valid values: "watsonx_saas", "watsonx_lightweightengine", "azure"
+PROVIDER_NAME = "watsonx_saas"
+
+## Service endpoint URL for the AI provider.
+## WatsonX SaaS: Regional endpoint. Common values:
+##   US South: https://us-south.ml.cloud.ibm.com
+##   EU De:    https://eu-de.ml.cloud.ibm.com
+##   EU GB:    https://eu-gb.ml.cloud.ibm.com
+##   JP Tok:   https://jp-tok.ml.cloud.ibm.com
+PROVIDER_URL = "https://us-south.ml.cloud.ibm.com"
+
+## API key for authentication.
+## WatsonX SaaS: IBM Cloud API key (Required).
+## Obtain your key at: https://cloud.ibm.com/iam/apikeys
+API_KEY = "<Required>"
+
+## WatsonX.ai deployment space ID where models are deployed.
+## Required for SaaS (at least one of SPACE_ID or PROJECT_ID must be provided).
+SPACE_ID = "<Required>"
+
+## WatsonX.ai project ID.
+## Required for SaaS (at least one of SPACE_ID or PROJECT_ID must be provided).
+PROJECT_ID = "<Required>"
+
+## Models Configuration
+## To add additional models, copy the [[PROVIDER_1.MODELS]] section below
+## and paste it after this section, then modify the MODEL_ID and DEFAULT values.
+## IMPORTANT: Only ONE model across ALL providers can have DEFAULT=true
+[[PROVIDER_1.MODELS]]
+
+## Unique identifier for the model as defined by the AI provider.
+MODEL_ID = "openai/gpt-oss-120b"
+
+## Set to true to make this the default/active model. Only ONE model across ALL providers can be set to true.
+DEFAULT = "true"
+
+## Temperature parameter for model inference (0.0 to 1.0).
+TEMPERATURE = "0.7"
+
+## Maximum number of tokens to generate.
+MAX_TOKENS = "2048"
+
+## Top-p (nucleus sampling) parameter.
+TOP_P = "1.0"
+
+## Top-k sampling parameter.
+TOP_K = "50"
+
+## Maximum context window size in tokens. Default: 131072 for WatsonX (SaaS/LWE), 272000 for Azure.
+CONTEXT_WINDOW_TOKEN_LIMIT = "131072"

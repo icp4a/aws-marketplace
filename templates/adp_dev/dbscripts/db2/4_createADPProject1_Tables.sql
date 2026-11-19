@@ -2,7 +2,6 @@ CONNECT TO proj1 ;
 
 SET SCHEMA ont1 ;
 
-
 -- Create tables 
 
 --
